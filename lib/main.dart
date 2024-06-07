@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:justpassapp/pages/home.dart';
+import 'package:justpassapp/pages/bottombar.dart';
 import 'package:justpassapp/cubit/theme_cubit.dart';
 
 void main() {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
             title: 'JustPassApp',
             theme: ThemeData(
               colorScheme: ColorScheme.fromSeed(
-                seedColor: const Color(0xFF4A90E2),
+                seedColor: const Color(0xFF4A4A4A),
                 brightness: Brightness.light,
               ),
               useMaterial3: true,
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
             themeMode: themeState == ThemeState.light
                 ? ThemeMode.light
                 : ThemeMode.dark,
-            home: const HomePage(),
+            home: const BottomBar(),
           );
         },
       ),
