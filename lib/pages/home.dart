@@ -117,7 +117,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
           onTap: (x) {},
-          kIconSize: 16,
+          kIconSize: 24,
           kBottomRadius: 2),
     );
   }
