@@ -11,6 +11,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _counter = 0;
+  int currentPageIndex = 0;
 
   void _incrementCounter() {
     setState(() {
@@ -22,43 +23,70 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final themeCubit = context.read<ThemeCubit>();
 
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: const Text('Exam Journal'),
-          actions: [
-            BlocBuilder<ThemeCubit, ThemeState>(
-              builder: (context, themeState) {
-                return Switch(
-                  value: themeState == ThemeState.dark,
-                  onChanged: (value) {
-                    themeCubit.toggleTheme();
-                  },
-                );
-              },
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: const Text('Exam Journal'),
+        actions: [
+          BlocBuilder<ThemeCubit, ThemeState>(
+            builder: (context, themeState) {
+              return Switch(
+                value: themeState == ThemeState.dark,
+                onChanged: (value) {
+                  themeCubit.toggleTheme();
+                },
+              );
+            },
+          ),
+        ],
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'You have pushed the button this many times:',
+            ),
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text(
-                'You have pushed the button this many times:',
-              ),
-              Text(
-                '$_counter',
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-            ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ),
+      bottomNavigationBar: NavigationBar(
+        onDestinationSelected: (int index) {
+          setState(() {
+            currentPageIndex = index;
+          });
+        },
+        destinations: const <Widget>[
+          NavigationDestination(
+            icon: Icon(Icons.auto_stories),
+            label: 'Journal',
           ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: _incrementCounter,
-          tooltip: 'Increment',
-          child: const Icon(Icons.add),
-        ),
+          NavigationDestination(
+            icon: Icon(Icons.search),
+            label: 'Analysis',
+          ),
+          NavigationDestination( 
+            icon: Icon(Icons.percent),
+            label: 'Marks',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.account_circle),
+            label: 'Profile',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+        ],
       ),
     );
   }
