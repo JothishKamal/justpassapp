@@ -22,43 +22,41 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final themeCubit = context.read<ThemeCubit>();
 
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: const Text('Exam Journal'),
-          actions: [
-            BlocBuilder<ThemeCubit, ThemeState>(
-              builder: (context, themeState) {
-                return Switch(
-                  value: themeState == ThemeState.dark,
-                  onChanged: (value) {
-                    themeCubit.toggleTheme();
-                  },
-                );
-              },
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: const Text('Exam Journal'),
+        actions: [
+          BlocBuilder<ThemeCubit, ThemeState>(
+            builder: (context, themeState) {
+              return Switch(
+                value: themeState == ThemeState.dark,
+                onChanged: (value) {
+                  themeCubit.toggleTheme();
+                },
+              );
+            },
+          ),
+        ],
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'You have pushed the button this many times:',
+            ),
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text(
-                'You have pushed the button this many times:',
-              ),
-              Text(
-                '$_counter',
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-            ],
-          ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: _incrementCounter,
-          tooltip: 'Increment',
-          child: const Icon(Icons.add),
-        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
       ),
     );
   }
