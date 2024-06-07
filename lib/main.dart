@@ -20,10 +20,21 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'JustPassApp',
             theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+              colorScheme: ColorScheme.fromSeed(
+                seedColor: const Color(0xFF4A90E2),
+                brightness: Brightness.light,
+              ),
               useMaterial3: true,
+              brightness: Brightness.light,
             ),
-            darkTheme: ThemeData.dark(),
+            darkTheme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(
+                seedColor: const Color(0xFF4A90E2),
+                brightness: Brightness.dark,
+              ),
+              useMaterial3: true,
+              brightness: Brightness.dark,
+            ),
             themeMode: themeState == ThemeState.light
                 ? ThemeMode.light
                 : ThemeMode.dark,

@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.search),
             label: 'Analysis',
           ),
-          NavigationDestination( 
+          NavigationDestination(
             icon: Icon(Icons.percent),
             label: 'Marks',
           ),
