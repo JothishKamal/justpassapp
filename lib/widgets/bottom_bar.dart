@@ -44,80 +44,68 @@ class _BottomBarState extends State<BottomBar> {
           ],
         ),
         extendBody: true,
-        bottomNavigationBar: Stack(
-          children: [
-            Container(
-              height: 94, // Height of the colored area above the bottom bar
-              color: const Color(0xFFD9D9D9), // The desired color
+        bottomNavigationBar: AnimatedNotchBottomBar(
+          notchBottomBarController: _notchBottomBarController,
+          color: const Color(0xffD9D9D9),
+          notchColor: const Color(0xffD9D9D9),
+          removeMargins: true,
+          bottomBarItems: const [
+            BottomBarItem(
+              inActiveItem: Icon(
+                Icons.home,
+                color: Color(0xFF102033),
+              ),
+              activeItem: Icon(
+                Icons.home,
+                color: Color(0xFF4990E2),
+              ),
             ),
-            // Positioned(
-            //   top: 0,
-            //   left: 0,
-            //   right: 0,
-            AnimatedNotchBottomBar(
-              notchBottomBarController: _notchBottomBarController,
-              color: Colors.black,
-              notchColor: Colors.black,
-              removeMargins: true,
-              bottomBarItems: const [
-                BottomBarItem(
-                  inActiveItem: Icon(
-                    Icons.home,
-                    color: Colors.white,
-                  ),
-                  activeItem: Icon(
-                    Icons.home,
-                    color: Color(0xFF7ED320),
-                  ),
-                ),
-                BottomBarItem(
-                  inActiveItem: Icon(
-                    Icons.book,
-                    color: Colors.white,
-                  ),
-                  activeItem: Icon(
-                    Icons.book,
-                    color: Color(0xFF7ED320),
-                  ),
-                ),
-                BottomBarItem(
-                  inActiveItem: Icon(
-                    Icons.pie_chart,
-                    color: Colors.white,
-                  ),
-                  activeItem: Icon(
-                    Icons.pie_chart,
-                    color: Color(0xFF7ED320),
-                  ),
-                ),
-                BottomBarItem(
-                  inActiveItem: Icon(
-                    Icons.note,
-                    color: Colors.white,
-                  ),
-                  activeItem: Icon(
-                    Icons.note,
-                    color: Color(0xFF7ED320),
-                  ),
-                ),
-                BottomBarItem(
-                  inActiveItem: Icon(
-                    Icons.person,
-                    color: Colors.white,
-                  ),
-                  activeItem: Icon(
-                    Icons.person,
-                    color: Color(0xFF7ED320),
-                  ),
-                ),
-              ],
-              onTap: (index) {
-                _pageController.jumpToPage(index);
-              },
-              kIconSize: 24,
-              kBottomRadius: 1,
+            BottomBarItem(
+              inActiveItem: Icon(
+                Icons.book,
+                color: Color(0xFF102033),
+              ),
+              activeItem: Icon(
+                Icons.book,
+                color: Color(0xFF4990E2),
+              ),
+            ),
+            BottomBarItem(
+              inActiveItem: Icon(
+                Icons.pie_chart,
+                color: Color(0xFF102033),
+              ),
+              activeItem: Icon(
+                Icons.pie_chart,
+                color: Color(0xFF4990E2),
+              ),
+            ),
+            BottomBarItem(
+              inActiveItem: Icon(
+                Icons.note,
+                color: Color(0xFF102033),
+              ),
+              activeItem: Icon(
+                Icons.note,
+                color: Color(0xFF4990E2),
+              ),
+            ),
+            BottomBarItem(
+              inActiveItem: Icon(
+                Icons.person,
+                color: Color(0xFF102033)
+              ),
+              activeItem: Icon(
+                Icons.person,
+                color: Color(0xFF4990E2),
+              ),
             ),
           ],
+          onTap: (index) {
+            _pageController.jumpToPage(index);
+          },
+          kIconSize: 24,
+          kBottomRadius: 1,
         ),
       ),
     );
