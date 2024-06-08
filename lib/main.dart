@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gemini/flutter_gemini.dart';
+import 'package:justpassapp/consts.dart';
 import 'package:justpassapp/widgets/bottom_bar.dart';
 import 'package:justpassapp/cubit/theme_cubit.dart';
 
 void main() {
+  Gemini.init(apiKey: GEMINI_API_KEY,);
   runApp(const MyApp());
 }
 
