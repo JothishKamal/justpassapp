@@ -6,7 +6,6 @@ import 'package:flutter/widgets.dart';
 import 'package:justpassapp/cubit/date_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class JournalPage extends StatefulWidget {
   const JournalPage({super.key});
 
@@ -18,41 +17,39 @@ class _JournalPageState extends State<JournalPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF102032),
+      backgroundColor: const Color(0xFF102032),
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.all(15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  BlocBuilder<DateCubit, DateState>(
-                    builder: (context, dateState) {
-                      return Text(
-                        '${dateState.weekday}, ${dateState.day} ${dateState.month} ${dateState.year}',
-                        style: const TextStyle(
-                            fontSize: 14,
-                            color: Colors.white),
-                      );
-                    },
+          child: Padding(
+        padding: const EdgeInsets.all(15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                BlocBuilder<DateCubit, DateState>(
+                  builder: (context, dateState) {
+                    return Text(
+                      '${dateState.weekday}, ${dateState.day} ${dateState.month} ${dateState.year}',
+                      style: const TextStyle(fontSize: 14, color: Colors.white),
+                    );
+                  },
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.notifications,
+                    size: 32,
+                    color: Colors.white,
                   ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.notifications,
-                      size: 32,
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
-              ),
-              const Row(
-                children: [
-                  Text(
-                    'Hi',
-                    style: TextStyle(
+                ),
+              ],
+            ),
+            const Row(
+              children: [
+                Text(
+                  'Hi',
+                  style: TextStyle(
                       color: Colors.white,
                       fontSize: 30,
                       fontWeight: FontWeight.bold
