@@ -5,6 +5,17 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:justpassapp/cubit/date_cubit.dart';
 import 'package:justpassapp/pages/gemini.dart';
 
+Map<int, String> _quotesMap = {
+  1: "Live as if you were to die tomorrow.",
+  2: "An investment in knowledge pays the best interest.",
+  3: "The roots of education are bitter, but the fruit is sweet.",
+  4: "The mind is not a vessel to be filled, but a fire to be kindled.",
+  5: "Learning is a treasure that will follow its owner everywhere.",
+  6: "Success has to start somewhere.",
+  7: "Education is the movement from darkness to light.",
+};
+
+@immutable
 class HomePage extends StatelessWidget {
   final NotchBottomBarController? controller;
 
@@ -131,13 +142,13 @@ class QuoteSection extends StatelessWidget {
             height: 40,
           ),
         ),
-        const Center(
+        Center(
           child: Padding(
-            padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+            padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
             child: Text(
-              "Success has to start somewhere.",
+              "${_quotesMap[DateTime.now().weekday]}",
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontFamily: 'Newsreader',
                 fontStyle: FontStyle.italic,
