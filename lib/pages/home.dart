@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:justpassapp/cubit/date_cubit.dart';
 
 class HomePage extends StatelessWidget {
   final NotchBottomBarController? controller;
@@ -17,19 +19,24 @@ class HomePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  '',
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Roboto'),
+                BlocBuilder<DateCubit, DateState>(
+                  builder: (context, dateState) {
+                    return Text(
+                      '${dateState.weekday}, ${dateState.day} ${dateState.month} ${dateState.year}',
+                      style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Roboto'),
+                    );
+                  },
                 ),
                 IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.notifications_outlined,
-                      size: 32,
-                    )),
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.notifications_outlined,
+                    size: 32,
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 20),

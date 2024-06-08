@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter_bloc: ^8.1.5
   animated_notch_bottom_bar: ^1.0.3
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:
