@@ -43,7 +43,7 @@ Widget marksTable() {
             return DataRow(
               cells: <DataCell>[
                 DataCell(Text(subject)),
-                const DataCell(const Text('80')),
+                const DataCell(Text('80')),
                 const DataCell(Text('85')),
                 const DataCell(Text('90')),
               ],
