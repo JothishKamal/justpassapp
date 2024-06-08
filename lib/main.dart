@@ -6,7 +6,9 @@ import 'package:justpassapp/widgets/bottom_bar.dart';
 import 'package:justpassapp/cubit/theme_cubit.dart';
 
 void main() {
-  Gemini.init(apiKey: GEMINI_API_KEY,);
+  Gemini.init(
+    apiKey: GEMINI_API_KEY,
+  );
   runApp(const MyApp());
 }
 
