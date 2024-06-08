@@ -24,23 +24,26 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SafeArea(
-      child: Padding(
-        padding: EdgeInsets.all(15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            HeaderRow(),
-            SizedBox(height: 20),
-            WelcomeText(),
-            QuoteSection(),
-            SizedBox(height: 10),
-            SectionTitle(title: "Reminders"),
-            SizedBox(height: 10),
-            ReminderBox(),
-            SizedBox(height: 20),
-            SectionTitle(title: "Recent Activity"),
-            SizedBox(height: 10),
-          ],
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              HeaderRow(),
+              SizedBox(height: 20),
+              WelcomeText(),
+              QuoteSection(),
+              SizedBox(height: 10),
+              SectionTitle(title: "Reminders"),
+              SizedBox(height: 10),
+              ReminderBox(),
+              SizedBox(height: 20),
+              SectionTitle(title: "Recent Activity"),
+              SizedBox(height: 10),
+              RecentActivityBar(),
+            ],
+          ),
         ),
       ),
     );
@@ -245,6 +248,34 @@ class ReminderBox extends StatelessWidget {
             );
           },
         ),
+      ),
+    );
+  }
+}
+
+class RecentActivityBar extends StatelessWidget {
+  const RecentActivityBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // horizontal list view of recent activities
+    return Container(
+      height: 150,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: 5,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Container(
+              width: 150,
+              decoration: BoxDecoration(
+                color: const Color(0xFFD9D9D9),
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
