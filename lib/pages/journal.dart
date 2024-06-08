@@ -57,40 +57,32 @@ class _JournalPageState extends State<JournalPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                BlocBuilder<DateCubit, DateState>(
-                  builder: (context, dateState) {
-                    return Text(
-                      '${dateState.weekday}, ${dateState.day} ${dateState.month} ${dateState.year}',
-                      style: const TextStyle(fontSize: 14, color: Colors.white),
-                    );
-                  },
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.notifications,
-                    size: 32,
-                    color: Colors.white,
-                  ),
-                ),
-              ],
-            ),
+            header(),
             const SizedBox(height: 10),
             salutation("Aakash"),
             const Divider(
               color: Color(0xFF315F95),
               thickness: 2,
             ),
-            const Text(
-              'My Journal',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 25,
-                fontStyle: FontStyle.italic,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'My Journal',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.add,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: 10),
             Row(
@@ -194,6 +186,30 @@ class _JournalPageState extends State<JournalPage> {
       )),
     );
   }
+}
+
+Widget header() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      BlocBuilder<DateCubit, DateState>(
+        builder: (context, dateState) {
+          return Text(
+            '${dateState.weekday}, ${dateState.day} ${dateState.month} ${dateState.year}',
+            style: const TextStyle(fontSize: 14, color: Colors.white),
+          );
+        },
+      ),
+      IconButton(
+        onPressed: () {},
+        icon: const Icon(
+          Icons.notifications,
+          size: 32,
+          color: Colors.white,
+        ),
+      ),
+    ],
+  );
 }
 
 Widget salutation(String name) {
