@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:justpassapp/cubit/date_cubit.dart';
+import 'package:justpassapp/pages/gemini.dart';
 
 class HomePage extends StatelessWidget {
   final NotchBottomBarController? controller;
@@ -35,7 +36,11 @@ class HomePage extends StatelessWidget {
                 Row(
                   children: [
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, 
+                          MaterialPageRoute(builder: (context) => const GeminiView()),
+                        );
+                      },
                       icon: const Icon(Icons.smart_toy, color: Colors.white,),
                     ),
                     IconButton(
