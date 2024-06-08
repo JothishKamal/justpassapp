@@ -91,10 +91,7 @@ class _BottomBarState extends State<BottomBar> {
               ),
             ),
             BottomBarItem(
-              inActiveItem: Icon(
-                Icons.person,
-                color: Color(0xFF102033)
-              ),
+              inActiveItem: Icon(Icons.person, color: Color(0xFF102033)),
               activeItem: Icon(
                 Icons.person,
                 color: Color(0xFF4990E2),
