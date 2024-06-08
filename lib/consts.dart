@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 // API Key
+// ignore: constant_identifier_names
 const GEMINI_API_KEY = 'AIzaSyBY-LwacA1bxPQxhyzktZQjQwpBLSW30AE';
 
 // Colors
