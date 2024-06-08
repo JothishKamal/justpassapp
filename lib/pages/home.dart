@@ -1,6 +1,5 @@
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:justpassapp/cubit/date_cubit.dart';
@@ -36,7 +35,10 @@ class HomePage extends StatelessWidget {
                   children: [
                     IconButton(
                       onPressed: () {},
-                      icon: const Icon(Icons.smart_toy, color: Colors.white,),
+                      icon: const Icon(
+                        Icons.smart_toy,
+                        color: Colors.white,
+                      ),
                     ),
                     IconButton(
                       onPressed: () {},
