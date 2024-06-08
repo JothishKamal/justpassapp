@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:justpassapp/cubit/date_cubit.dart';
+import 'package:justpassapp/cubit/recent.activity.cubit.dart';
 import 'package:justpassapp/pages/gemini.dart';
 
 Map<int, String> _quotesMap = {
@@ -55,6 +56,7 @@ class HeaderRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final recentActivityCubit = RecentActivityCubit();
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -71,6 +73,11 @@ class HeaderRow extends StatelessWidget {
           children: [
             IconButton(
               onPressed: () {
+                recentActivityCubit.updateRecentActivity(recentActivityCubit
+                    .state['recentActivity']
+                    .sublist(
+                        1, recentActivityCubit.state['recentActivity'].length)
+                    .toList());
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const GeminiView()),
@@ -144,7 +151,8 @@ class QuoteSection extends StatelessWidget {
         ),
         Center(
           child: Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+            padding:
+                const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
             child: Text(
               "${_quotesMap[DateTime.now().weekday]}",
               textAlign: TextAlign.center,
@@ -210,20 +218,76 @@ class RecentActivityBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // horizontal list view of recent activities
-    return Container(
-      height: 150,
+    final recentActivityCubit = RecentActivityCubit();
+    // horizontal list view of recent activities from cubit
+    return SizedBox(
+      height: 170,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: 5,
+        itemCount: recentActivityCubit.state['recentActivity'].length,
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.all(5.0),
             child: Container(
-              width: 150,
+              width: 200,
               decoration: BoxDecoration(
                 color: const Color(0xFFD9D9D9),
                 borderRadius: BorderRadius.circular(10),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      recentActivityCubit.state['recentActivity'][index]
+                          ['title'],
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  const Spacer(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 5),
+                    child: Text(
+                      recentActivityCubit.state['recentActivity'][index]
+                          ['subtitle'],
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 5),
+                    child: Text(
+                      recentActivityCubit.state['recentActivity'][index]
+                          ['date'],
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 5),
+                    child: Text(
+                      recentActivityCubit.state['recentActivity'][index]
+                          ['time'],
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                ],
               ),
             ),
           );

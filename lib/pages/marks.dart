@@ -102,7 +102,6 @@ class _MarksPageState extends State<MarksPage> {
                   color: fieldbg,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                width: MediaQuery.of(context).size.width * 0.6,
                 child: TextFormField(
                   controller: classAverage,
                   onChanged: (value) {
@@ -120,6 +119,7 @@ class _MarksPageState extends State<MarksPage> {
                   ),
                 ),
               ),
+              TextButton(onPressed: () {}, child: Text("data")),
               const SizedBox(height: 20),
               const Text(
                 "List of Expected Marks",
@@ -145,7 +145,6 @@ class _MarksPageState extends State<MarksPage> {
         color: fieldbg,
         borderRadius: BorderRadius.circular(10),
       ),
-      width: MediaQuery.of(context).size.width * 0.6,
       child: DropdownButton<String>(
           isExpanded: true,
           isDense: true,

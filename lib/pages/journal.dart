@@ -11,14 +11,14 @@ class JournalPage extends StatefulWidget {
 
 List entryData = [
   {
-    'date': '7th June 2024',
+    'date': '7th August 2024',
     'title':
         'A Heartfelt Day: Celebrating my birthday in the midst of exam season',
     'content':
         'Today was a whirlwind of emotions as I celebrated my birthday amidst the stress of exam season. Despite the looming deadlines and piles of notes, my friends and piles of notes, my friends ...',
   },
   {
-    'date': '5th June 2024',
+    'date': '5th July 2024',
     'title': 'A Day of Reflection: My journey to self-discovery',
     'content':
         'Today was a day of reflection as I embarked on a journey of self-discovery. I spent the day exploring new hobbies and interests, and it was a refreshing change of pace from my usual routine ...',
@@ -100,6 +100,9 @@ class _JournalPageState extends State<JournalPage> {
                                       .toLowerCase()
                                       .contains(value.toLowerCase()) ||
                                   entry['content']
+                                      .toLowerCase()
+                                      .contains(value.toLowerCase()) ||
+                                  entry['date']
                                       .toLowerCase()
                                       .contains(value.toLowerCase()))
                               .toList();

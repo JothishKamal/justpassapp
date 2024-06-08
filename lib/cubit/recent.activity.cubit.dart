@@ -40,7 +40,7 @@ class RecentActivityCubit extends Cubit<Map> {
         });
 
   void updateRecentActivity(List recentActivity) {
-    emit(state..['recentActivity'] = recentActivity);
+   
   }
 }
 
