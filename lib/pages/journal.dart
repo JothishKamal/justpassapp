@@ -155,7 +155,7 @@ class Entry extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'Journal Entry $index',
+          'Journal Entry',
           style: TextStyle(
             color: Colors.black,
             fontSize: 20,
