@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'JustPassApp',
             theme: ThemeData(
-              fontFamily: 'ComicNeue',
+              fontFamily: 'Raleway',
               colorScheme: ColorScheme.fromSeed(
                 seedColor: const Color(0xFF4A4A4A),
                 brightness: Brightness.light,
