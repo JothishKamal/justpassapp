@@ -83,12 +83,15 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 365.0),
-                child: SvgPicture.asset(
-                  'assets/images/quotes-right.svg',
-                  width: 40,
-                  height: 40,
+              Container(
+                height: 40,
+                alignment: Alignment.centerRight,
+                child: Expanded(
+                  child: SvgPicture.asset(
+                    'assets/images/quotes-right.svg',
+                    width: 40,
+                    height: 40,
+                  ),
                 ),
               ),
               const SizedBox(

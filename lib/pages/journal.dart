@@ -80,11 +80,13 @@ class _JournalPageState extends State<JournalPage> {
                   fontStyle: FontStyle.italic,
                 ),
               ),
+              const SizedBox(height: 10),
               Container(
                 height: 40,
                 child: const TextField(
                   style: TextStyle(
                     fontSize: 15,
+                    padding: EdgeInsets.only(top: 5),
                   ),
                   decoration: InputDecoration(
                     hintText: 'Search',
