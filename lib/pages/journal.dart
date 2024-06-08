@@ -229,7 +229,7 @@ Widget salutation(String name) {
           fontFamily: 'Newsreader',
         ),
       ),
-      const SizedBox(width: 5),
+      const SizedBox(width: 6),
       Text(
         "$name,",
         style: const TextStyle(
