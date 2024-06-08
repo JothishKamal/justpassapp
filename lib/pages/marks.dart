@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
+=======
 import 'package:justpassapp/consts.dart';
+>>>>>>> 98cce91c0337ac3d4d5b6f76796f18fb678518d0
 import 'package:justpassapp/cubit/date_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:justpassapp/cubit/subject_data.cubit.dart';
