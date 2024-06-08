@@ -95,6 +95,8 @@ flutter:
           weight: 400
         - asset: fonts/Raleway-Bold.ttf
           weight: 700
+        - asset: fonts/Raleway-Italic.ttf
+          style: italic
   
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

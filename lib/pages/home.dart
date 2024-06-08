@@ -5,6 +5,17 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:justpassapp/cubit/date_cubit.dart';
 import 'package:justpassapp/pages/gemini.dart';
 
+Map<int, String> _quotesMap = {
+  1: "Live as if you were to die tomorrow.",
+  2: "An investment in knowledge pays the best interest.",
+  3: "The roots of education are bitter, but the fruit is sweet.",
+  4: "The mind is not a vessel to be filled, but a fire to be kindled.",
+  5: "Learning is a treasure that will follow its owner everywhere.",
+  6: "Success has to start somewhere.",
+  7: "Education is the movement from darkness to light.",
+};
+
+@immutable
 class HomePage extends StatelessWidget {
   final NotchBottomBarController? controller;
 
@@ -13,23 +24,26 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SafeArea(
-      child: Padding(
-        padding: EdgeInsets.all(15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            HeaderRow(),
-            SizedBox(height: 20),
-            WelcomeText(),
-            QuoteSection(),
-            SizedBox(height: 10),
-            SectionTitle(title: "Reminders"),
-            SizedBox(height: 10),
-            ReminderBox(),
-            SizedBox(height: 20),
-            SectionTitle(title: "Recent Activity"),
-            SizedBox(height: 10),
-          ],
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              HeaderRow(),
+              SizedBox(height: 20),
+              WelcomeText(),
+              QuoteSection(),
+              SizedBox(height: 10),
+              SectionTitle(title: "Reminders"),
+              SizedBox(height: 10),
+              ReminderBox(),
+              SizedBox(height: 20),
+              SectionTitle(title: "Recent Activity"),
+              SizedBox(height: 10),
+              RecentActivityBar(),
+            ],
+          ),
         ),
       ),
     );
@@ -128,15 +142,17 @@ class QuoteSection extends StatelessWidget {
             height: 40,
           ),
         ),
-        const Center(
+        Center(
           child: Padding(
-            padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+            padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
             child: Text(
-              "Success has to start somewhere.",
+              "${_quotesMap[DateTime.now().weekday]}",
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
-                fontSize: 22,
+                fontFamily: 'Newsreader',
+                fontStyle: FontStyle.italic,
+                fontSize: 24,
               ),
             ),
           ),
@@ -184,6 +200,34 @@ class ReminderBox extends StatelessWidget {
           color: const Color(0xFFD9D9D9),
           borderRadius: BorderRadius.circular(10),
         ),
+      ),
+    );
+  }
+}
+
+class RecentActivityBar extends StatelessWidget {
+  const RecentActivityBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // horizontal list view of recent activities
+    return Container(
+      height: 150,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: 5,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Container(
+              width: 150,
+              decoration: BoxDecoration(
+                color: const Color(0xFFD9D9D9),
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          );
+        },
       ),
     );
   }

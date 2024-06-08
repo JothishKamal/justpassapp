@@ -43,38 +43,34 @@ class ProfilePage extends StatelessWidget {
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 30,
-                      fontWeight: FontWeight.bold
-                    ),
-                  ),
-                  SizedBox(width: 5),
-                  Text(
-                    'Aakaash,',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                    ),
-                  ),
-                ],
-              ),
-              const Divider(
-                color: Color(0xFF315F95),
-                thickness: 2,
-              ),
-              const Text(
-                'My Profile',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 25,
-                  fontStyle: FontStyle.italic,
+                      fontWeight: FontWeight.bold),
                 ),
+                SizedBox(width: 5),
+                Text(
+                  'Aakaash,',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 30,
+                  ),
+                ),
+              ],
+            ),
+            const Divider(
+              color: Color(0xFF315F95),
+              thickness: 2,
+            ),
+            const Text(
+              'My Profile',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 25,
+                fontStyle: FontStyle.italic,
               ),
-              const SizedBox(height: 10),
-              
-            ],
-          ),
-        )
-      ),
+            ),
+            const SizedBox(height: 10),
+          ],
+        ),
+      )),
     );
   }
 }
-

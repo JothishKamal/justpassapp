@@ -141,41 +141,46 @@ class _JournalPageState extends State<JournalPage> {
                 separatorBuilder: (context, index) =>
                     const SizedBox(height: 20),
                 itemBuilder: (context, index) {
-                  return Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 217, 217, 217),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          activeEntries[index]['date'],
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 15,
+                  return GestureDetector(
+                    onTap: () {
+                      // TODO: Entry Page
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 15),
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 217, 217, 217),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            activeEntries[index]['date'],
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 5),
-                        Text(
-                          activeEntries[index]['title'],
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
+                          const SizedBox(height: 5),
+                          Text(
+                            activeEntries[index]['title'],
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 5),
-                        Text(
-                          activeEntries[index]['content'],
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 15,
+                          const SizedBox(height: 5),
+                          Text(
+                            activeEntries[index]['content'],
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   );
                 },
@@ -224,7 +229,7 @@ Widget salutation(String name) {
           fontFamily: 'Newsreader',
         ),
       ),
-      const SizedBox(width: 5),
+      const SizedBox(width: 6),
       Text(
         "$name,",
         style: const TextStyle(
