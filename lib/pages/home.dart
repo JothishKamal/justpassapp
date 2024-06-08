@@ -185,12 +185,26 @@ class SectionTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      title,
-      style: const TextStyle(
-        color: Colors.white,
-        fontSize: 24,
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          title,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 24,
+          ),
+        ),
+        (title == "Reminders")
+            ? IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.add,
+                  color: Colors.white,
+                ),
+              )
+            : Container(),
+      ],
     );
   }
 }
@@ -200,13 +214,46 @@ class ReminderBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Dummy data for reminders
+    final reminders = [
+      {'title': 'Complete Differential Eq. tutorial 1', 'date': '7th June'},
+      {'title': 'Revise Physics module 3', 'date': '14th June'},
+      {'title': 'Upload English DA 1', 'date': '20th June'},
+    ];
+
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: Container(
-        height: 150,
+        height: 200,
         decoration: BoxDecoration(
           color: const Color(0xFFD9D9D9),
           borderRadius: BorderRadius.circular(10),
+        ),
+        child: ListView.separated(
+          itemCount: reminders.length,
+          separatorBuilder: (context, index) => const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 50),
+              child: Divider(color: Color.fromRGBO(73, 144, 226, .33))),
+          itemBuilder: (context, index) {
+            return ListTile(
+              leading: const Icon(
+                Icons.radio_button_unchecked,
+                color: Color(0xff4990E2),
+              ),
+              title: Text(
+                reminders[index]['title']!,
+                style: const TextStyle(fontSize: 16, color: Colors.black),
+              ),
+              subtitle: Text(
+                reminders[index]['date']!,
+                style: const TextStyle(fontSize: 14, color: Colors.black),
+              ),
+              trailing: const Icon(
+                Icons.more_vert,
+                color: Colors.black,
+              ),
+            );
+          },
         ),
       ),
     );
