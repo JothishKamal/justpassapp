@@ -38,6 +38,7 @@ class _GeminiViewState extends State<GeminiView> {
     }
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
