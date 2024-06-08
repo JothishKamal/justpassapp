@@ -1,8 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:justpassapp/cubit/date_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -47,37 +43,34 @@ class AnalysisPage extends StatelessWidget {
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 30,
-                      fontWeight: FontWeight.bold
-                    ),
-                  ),
-                  SizedBox(width: 5),
-                  Text(
-                    'Aakaash,',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                    ),
-                  ),
-                ],
-              ),
-              const Divider(
-                color: Color(0xFF315F95),
-                thickness: 2,
-              ),
-              const Text(
-                'My Analysis',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 25,
-                  fontStyle: FontStyle.italic,
+                      fontWeight: FontWeight.bold),
                 ),
+                SizedBox(width: 5),
+                Text(
+                  'Aakaash,',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 30,
+                  ),
+                ),
+              ],
+            ),
+            const Divider(
+              color: Color(0xFF315F95),
+              thickness: 2,
+            ),
+            const Text(
+              'My Analysis',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 25,
+                fontStyle: FontStyle.italic,
               ),
-              const SizedBox(height: 10),
-              
-            ],
-          ),
-        )
-      ),
+            ),
+            const SizedBox(height: 10),
+          ],
+        ),
+      )),
     );
   }
 }

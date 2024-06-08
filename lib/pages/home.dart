@@ -136,7 +136,9 @@ class QuoteSection extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 22,
+                fontFamily: 'Newsreader',
+                fontStyle: FontStyle.italic,
+                fontSize: 24,
               ),
             ),
           ),

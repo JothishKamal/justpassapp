@@ -23,28 +23,36 @@ class _GeminiViewState extends State<GeminiView> {
   final ChatUser _geminiUser = ChatUser(id: '2', firstName: 'Gemini');
 
   List<ChatMessage> _messages = <ChatMessage>[];
+  final List<ChatUser> _typingUsers = <ChatUser>[];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white,),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        backgroundColor: const Color(0xFF102033),
+        title: const Text(
+          'Gemini Chat',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+      ),
       body: Container(
         color: const Color(0xFF102032),
         child: SafeArea(
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: const Icon(
-                Icons.arrow_back,
-                color: Colors.white,
-              ),
-            ),
             Expanded(
               child: DashChat(
                 currentUser: _currentUser,
+                typingUsers: _typingUsers,
                 onSend: (ChatMessage m) {
                   getChatResponse(m);
                 },
@@ -85,6 +93,7 @@ class _GeminiViewState extends State<GeminiView> {
   Future<void> getChatResponse(ChatMessage m) async {
     setState(() {
       _messages.insert(0, m);
+      _typingUsers.add(_geminiUser);
     });
     try {
       String question = m.text;
@@ -106,6 +115,7 @@ class _GeminiViewState extends State<GeminiView> {
           ChatMessage msg = ChatMessage(
               user: _geminiUser, createdAt: DateTime.now(), text: response);
           setState(() {
+            _typingUsers.remove(_geminiUser);
             _messages = [msg, ..._messages];
           });
         }
