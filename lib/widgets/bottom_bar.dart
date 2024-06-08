@@ -38,7 +38,7 @@ class _BottomBarState extends State<BottomBar> {
           children: const [
             HomePage(),
             JournalPage(),
-            AnalysisPage(),
+            AnalysisPage(isShowingMainData: true,),
             MarksPage(),
             ProfilePage(),
           ],
