@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:justpassapp/consts.dart';
 
 class GeminiView extends StatefulWidget {
   const GeminiView({super.key});
@@ -11,6 +11,8 @@ class GeminiView extends StatefulWidget {
   @override
   State<GeminiView> createState() => _GeminiViewState();
 }
+
+List<ChatMessage> _messages = <ChatMessage>[];
 
 class _GeminiViewState extends State<GeminiView> {
   final Gemini gemini = Gemini.instance;
@@ -22,20 +24,30 @@ class _GeminiViewState extends State<GeminiView> {
 
   final ChatUser _geminiUser = ChatUser(id: '2', firstName: 'Gemini');
 
-  List<ChatMessage> _messages = <ChatMessage>[];
   final List<ChatUser> _typingUsers = <ChatUser>[];
 
   @override
   Widget build(BuildContext context) {
+    if (_messages.isEmpty) {
+      _messages.insert(
+          0,
+          ChatMessage(
+              user: _geminiUser,
+              createdAt: DateTime.now(),
+              text: 'Hello, I am Gemini. How can I help you?'));
+    }
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white,),
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        backgroundColor: const Color(0xFF102033),
+        backgroundColor: primary,
         title: const Text(
           'Gemini Chat',
           style: TextStyle(
@@ -57,30 +69,11 @@ class _GeminiViewState extends State<GeminiView> {
                   getChatResponse(m);
                 },
                 messages: _messages,
-                messageOptions: MessageOptions(
-                  currentUserContainerColor: const Color(0xFFB9B9B9),
-                  containerColor: const Color(0xFF4A90E2),
-
-                  //TODO: Markdown doesn't work
-                  markdownStyleSheet: MarkdownStyleSheet(
-                    p: const TextStyle(color: Colors.pink),
-                    h1: const TextStyle(color: Colors.white, fontSize: 20),
-                    h2: const TextStyle(color: Colors.white, fontSize: 18),
-                    h3: const TextStyle(color: Colors.white, fontSize: 16),
-                    h4: const TextStyle(color: Colors.white, fontSize: 14),
-                    h5: const TextStyle(color: Colors.white, fontSize: 12),
-                    h6: const TextStyle(color: Colors.white, fontSize: 10),
-                    em: const TextStyle(
-                        color: Colors.white, fontStyle: FontStyle.italic),
-                    strong: const TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
-                    code: const TextStyle(color: Colors.white),
-                    codeblockPadding: const EdgeInsets.all(10),
-                    codeblockDecoration: BoxDecoration(
-                      color: const Color(0xFF315F95),
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                  ),
+                messageOptions: const MessageOptions(
+                  currentUserContainerColor: Color.fromARGB(255, 253, 253, 253),
+                  containerColor: Color.fromARGB(255, 242, 255, 97),
+                  textColor: Colors.black,
+                  currentUserTextColor: Colors.black,
                 ),
               ),
             )

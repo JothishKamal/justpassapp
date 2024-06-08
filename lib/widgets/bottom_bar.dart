@@ -1,6 +1,7 @@
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:justpassapp/consts.dart';
 import 'package:justpassapp/pages/home.dart';
 import 'package:justpassapp/pages/journal.dart';
 import 'package:justpassapp/pages/analysis.dart';
@@ -31,7 +32,7 @@ class _BottomBarState extends State<BottomBar> {
     return BlocProvider(
       create: (context) => DateCubit()..getCurrentDate(),
       child: Scaffold(
-        backgroundColor: const Color(0xFF102033),
+        backgroundColor: primary,
         body: PageView(
           controller: _pageController,
           physics: const NeverScrollableScrollPhysics(),
@@ -53,48 +54,48 @@ class _BottomBarState extends State<BottomBar> {
             BottomBarItem(
               inActiveItem: Icon(
                 Icons.home,
-                color: Color(0xFF102033),
+                color: primary,
               ),
               activeItem: Icon(
                 Icons.home,
-                color: Color(0xFF4990E2),
+                color: primary,
               ),
             ),
             BottomBarItem(
               inActiveItem: Icon(
                 Icons.book,
-                color: Color(0xFF102033),
+                color: primary,
               ),
               activeItem: Icon(
                 Icons.book,
-                color: Color(0xFF4990E2),
+                color: primary,
               ),
             ),
             BottomBarItem(
               inActiveItem: Icon(
                 Icons.stacked_line_chart,
-                color: Color(0xFF102033),
+                color: primary,
               ),
               activeItem: Icon(
                 Icons.stacked_line_chart,
-                color: Color(0xFF4990E2),
+                color: primary,
               ),
             ),
             BottomBarItem(
               inActiveItem: Icon(
                 Icons.note,
-                color: Color(0xFF102033),
+                color: primary,
               ),
               activeItem: Icon(
                 Icons.note,
-                color: Color(0xFF4990E2),
+                color: primary,
               ),
             ),
             BottomBarItem(
-              inActiveItem: Icon(Icons.person, color: Color(0xFF102033)),
+              inActiveItem: Icon(Icons.person, color: primary),
               activeItem: Icon(
                 Icons.person,
-                color: Color(0xFF4990E2),
+                color: primary,
               ),
             ),
           ],
