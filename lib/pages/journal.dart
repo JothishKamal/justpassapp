@@ -81,37 +81,90 @@ class _JournalPageState extends State<JournalPage> {
                 ),
               ),
               const SizedBox(height: 10),
-              Container(
-                height: 40,
-                child: const TextField(
-                  style: TextStyle(
-                    fontSize: 15,
-                    padding: EdgeInsets.only(top: 5),
-                  ),
-                  decoration: InputDecoration(
-                    hintText: 'Search',
-                    prefixIcon: Icon(
-                      Icons.search,
-                      color: Colors.grey,
-                    ),
-                    hintStyle: TextStyle(
-                      color: Colors.grey,
-                    ),
-                    fillColor: Colors.white,
-                    filled: true,
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.white,
+              Row(
+                children: [
+                  Expanded( // Wrap TextField in Expanded to ensure it takes up remaining space
+                    child: Container(
+                      height: 40,
+                      child: TextField(
+                        style: TextStyle(
+                          fontSize: 15,
+                        ),
+                        decoration: InputDecoration(
+                          hintText: 'Search',
+                          prefixIcon: Icon(
+                            Icons.search,
+                            color: Colors.grey,
+                          ),
+                          hintStyle: TextStyle(
+                            color: Colors.grey,
+                          ),
+                          fillColor: Colors.white,
+                          filled: true,
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.white,
+                            ),
+                            borderRadius: BorderRadius.all(Radius.circular(15)),
+                          ),
+                        ),
                       ),
-                      borderRadius: BorderRadius.all(Radius.circular(20))
                     ),
                   ),
-                ),
+                  IconButton( // Add an IconButton to the right of the TextField
+                    icon: Icon(Icons.tune),
+                    color: Colors.white,
+                    onPressed: () {
+                      // Add your action here
+                    },
+                  ),
+                ],
+              ),
+              SizedBox(height: 20),
+              Expanded(
+                child: ListView.separated(
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      height: 100,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Color(0xFFD9D9D9)
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Entry(),
+                      ),
+                    );
+                  },
+                  separatorBuilder: (context, index) => const SizedBox(height: 10),
+                )
               ),
             ],
           ),
         )
       ),
+    );
+  }
+}
+
+class Entry extends StatelessWidget {
+  const Entry({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          'Journal Entry $index',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 20,
+          ),
+        ),
+      ],
     );
   }
 }
