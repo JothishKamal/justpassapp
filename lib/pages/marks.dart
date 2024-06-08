@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:justpassapp/cubit/date_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -53,12 +52,21 @@ class _MarksPageState extends State<MarksPage> {
               ),
             ),
             const SizedBox(height: 18),
-            const Text(
-              "Enter Marks",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  "Enter Marks",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
+                ),
+                IconButton.filled(
+                    color: Colors.blue,
+                    onPressed: () {},
+                    icon: const Icon(Icons.edit, color: Colors.white)),
+              ],
             ),
             const SizedBox(height: 10),
             dropDown("Select Subject", subjects, subject, (String? value) {
@@ -177,7 +185,7 @@ Widget salutation(String name) {
           fontFamily: 'Newsreader',
         ),
       ),
-      const SizedBox(width: 5),
+      const SizedBox(width: 6),
       Text(
         "$name,",
         style: const TextStyle(
