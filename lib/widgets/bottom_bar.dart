@@ -6,10 +6,7 @@ import 'package:justpassapp/pages/journal.dart';
 import 'package:justpassapp/pages/analysis.dart';
 import 'package:justpassapp/pages/marks.dart';
 import 'package:justpassapp/pages/profile.dart';
-
 import '../cubit/date_cubit.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:justpassapp/cubit/theme_cubit.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({super.key});
@@ -19,7 +16,7 @@ class BottomBar extends StatefulWidget {
 }
 
 class _BottomBarState extends State<BottomBar> {
-  final _pageController = PageController(initialPage: 0);
+  final _pageController = PageController();
   final NotchBottomBarController _notchBottomBarController =
       NotchBottomBarController();
 
@@ -34,6 +31,7 @@ class _BottomBarState extends State<BottomBar> {
     return BlocProvider(
       create: (context) => DateCubit()..getCurrentDate(),
       child: Scaffold(
+        backgroundColor: const Color(0xFF102033),
         body: PageView(
           controller: _pageController,
           physics: const NeverScrollableScrollPhysics(),
@@ -46,68 +44,80 @@ class _BottomBarState extends State<BottomBar> {
           ],
         ),
         extendBody: true,
-        bottomNavigationBar: AnimatedNotchBottomBar(
-          notchBottomBarController: _notchBottomBarController,
-          color: Colors.black,
-          notchColor: Colors.black,
-          removeMargins: true,
-          bottomBarItems: const [
-            BottomBarItem(
-              inActiveItem: Icon(
-                Icons.home,
-                color: Colors.white,
-              ),
-              activeItem: Icon(
-                Icons.home,
-                color: Color(0xFF7ED320),
-              ),
+        bottomNavigationBar: Stack(
+          children: [
+            Container(
+              height: 94, // Height of the colored area above the bottom bar
+              color: const Color(0xFFD9D9D9), // The desired color
             ),
-            BottomBarItem(
-              inActiveItem: Icon(
-                Icons.book,
-                color: Colors.white,
-              ),
-              activeItem: Icon(
-                Icons.book,
-                color: Color(0xFF7ED320),
-              ),
-            ),
-            BottomBarItem(
-              inActiveItem: Icon(
-                Icons.pie_chart,
-                color: Colors.white,
-              ),
-              activeItem: Icon(
-                Icons.pie_chart,
-                color: Color(0xFF7ED320),
-              ),
-            ),
-            BottomBarItem(
-              inActiveItem: Icon(
-                Icons.note,
-                color: Colors.white,
-              ),
-              activeItem: Icon(
-                Icons.note,
-                color: Color(0xFF7ED320),
-              ),
-            ),
-            BottomBarItem(
-              inActiveItem: Icon(
-                Icons.person,
-                color: Colors.white,
-              ),
-              activeItem: Icon(
-                Icons.person,
-                color: Color(0xFF7ED320),
-              ),
+            // Positioned(
+            //   top: 0,
+            //   left: 0,
+            //   right: 0,
+            AnimatedNotchBottomBar(
+              notchBottomBarController: _notchBottomBarController,
+              color: Colors.black,
+              notchColor: Colors.black,
+              removeMargins: true,
+              bottomBarItems: const [
+                BottomBarItem(
+                  inActiveItem: Icon(
+                    Icons.home,
+                    color: Colors.white,
+                  ),
+                  activeItem: Icon(
+                    Icons.home,
+                    color: Color(0xFF7ED320),
+                  ),
+                ),
+                BottomBarItem(
+                  inActiveItem: Icon(
+                    Icons.book,
+                    color: Colors.white,
+                  ),
+                  activeItem: Icon(
+                    Icons.book,
+                    color: Color(0xFF7ED320),
+                  ),
+                ),
+                BottomBarItem(
+                  inActiveItem: Icon(
+                    Icons.pie_chart,
+                    color: Colors.white,
+                  ),
+                  activeItem: Icon(
+                    Icons.pie_chart,
+                    color: Color(0xFF7ED320),
+                  ),
+                ),
+                BottomBarItem(
+                  inActiveItem: Icon(
+                    Icons.note,
+                    color: Colors.white,
+                  ),
+                  activeItem: Icon(
+                    Icons.note,
+                    color: Color(0xFF7ED320),
+                  ),
+                ),
+                BottomBarItem(
+                  inActiveItem: Icon(
+                    Icons.person,
+                    color: Colors.white,
+                  ),
+                  activeItem: Icon(
+                    Icons.person,
+                    color: Color(0xFF7ED320),
+                  ),
+                ),
+              ],
+              onTap: (index) {
+                _pageController.jumpToPage(index);
+              },
+              kIconSize: 24,
+              kBottomRadius: 1,
             ),
           ],
-          onTap: (index) {
-            _pageController.jumpToPage(index);
-          },
-          kIconSize: 24,
-          kBottomRadius: 1,
         ),
       ),
     );

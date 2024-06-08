@@ -1,6 +1,8 @@
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:justpassapp/cubit/date_cubit.dart';
 
 class HomePage extends StatelessWidget {
@@ -11,100 +13,116 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                BlocBuilder<DateCubit, DateState>(
-                  builder: (context, dateState) {
-                    return Text(
-                      '${dateState.weekday}, ${dateState.day} ${dateState.month} ${dateState.year}',
-                      style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Roboto'),
-                    );
-                  },
+      child: Scaffold(
+        backgroundColor: const Color.fromRGBO(16, 32, 51, 1),
+        body: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  BlocBuilder<DateCubit, DateState>(
+                    builder: (context, dateState) {
+                      return Text(
+                        '${dateState.weekday}, ${dateState.day} ${dateState.month} ${dateState.year}',
+                        style: const TextStyle(
+                            fontSize: 16,
+                            color: Colors.white,
+                            fontFamily: 'Raleway'),
+                      );
+                    },
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.notifications,
+                      color: Colors.white,
+                      size: 28,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                "Welcome Back,",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Newsreader',
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.notifications_outlined,
-                    size: 32,
+              ),
+              const Text(
+                "Aakaash!",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 32,
+                  fontFamily: 'Newsreader',
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10, left: 5.0),
+                child: SvgPicture.asset(
+                  'assets/images/quotes.svg',
+                  width: 40,
+                  height: 40,
+                ),
+              ),
+              const Center(
+                child: Padding(
+                  padding:
+                      EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+                  child: Text(
+                    "Success has to start somewhere.",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 22,
+                    ),
                   ),
                 ),
-              ],
-            ),
-            const SizedBox(height: 20),
-            const Text(
-              "Quote Of The Day:",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            const Text(
-              "“Do the best you can until you know better. Then when you know better, do better.”\n— Maya Angelou",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              "Reminders:",
-              style: TextStyle(
-                  fontFamily: 'Roboto',
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Container(
-                height: 150,
-                decoration: BoxDecoration(
-                  color: const Color(0xFF4A4A4A),
-                  borderRadius: BorderRadius.circular(10),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 365.0),
+                child: SvgPicture.asset(
+                  'assets/images/quotes-right.svg',
+                  width: 40,
+                  height: 40,
                 ),
               ),
-            ),
-            const SizedBox(height: 20),
-            const Text(
-              "Recent Activity:",
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Roboto',
+              const SizedBox(
+                height: 10,
               ),
-            ),
-            const SizedBox(height: 10),
-            Expanded(
-              child: ListView.builder(
-                itemCount: 3,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                    child: Container(
-                      width: 150,
-                      height: 150,
-                      decoration: BoxDecoration(
-                        color: (index % 2 == 0)
-                            ? const Color(0xFF4A90E2)
-                            : const Color(0xFF7ED321),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: Text("Activity ${index + 1}"),
-                      ),
-                    ),
-                  );
-                },
+              const Text(
+                "Reminders",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
               ),
-            ),
-          ],
+              const SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: Container(
+                  height: 150,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFD9D9D9),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                "Recent Activity ",
+                style: TextStyle(
+                  fontSize: 24,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 10),
+            ],
+          ),
         ),
       ),
     );
