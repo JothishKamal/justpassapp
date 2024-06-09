@@ -4,25 +4,27 @@ class SubjectDataCubit extends Cubit<Map> {
   SubjectDataCubit()
       : super({
           'subject': null,
-          'subjects': [
-            'Engineering Physics',
-            'Engineering Chemistry',
-            'Mathematics'
-          ],
+          'subjects': ['Select Subject'],
           'examType': null,
-          'examTypes': ['CAT - 1', 'CAT - 2', 'FAT'],
+          'examTypes': ['Type of Exam'],
           'expectedGrade': null,
-          'expected': ['S', 'A', 'B', 'C', 'F'],
+          'expected': ['Expected Grade'],
           'classAverage': null,
         });
-  void updateSubjects(String? subjects) {
-    List<String> subjectList = subjects!.split(',');
-    emit(state..['subject'] = subjectList);
+  void updateSubjects(List<String> subjects) {
+    final newState = state;
+    newState['subjects'] = subjects;
+    emit(newState);
   }
 
-  void updateExamTypes(String? examType) {
-    List<String> examTypeList = examType!.split(',');
-    emit(state..['examType'] = examTypeList);
+  void updateExamTypes(List<String> examTypes) {
+    final newState = state;
+    newState['examTypes'] = examTypes;
+    emit(newState);
+  }
+
+  void updateExpectedGrades(List<String> expectedGrades) {
+    emit(state..['expected'] = expectedGrades);
   }
 
   void updateSubject(String? subject) {

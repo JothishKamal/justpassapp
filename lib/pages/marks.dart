@@ -15,17 +15,10 @@ class MarksPage extends StatefulWidget {
 
 class _MarksPageState extends State<MarksPage> {
   String? subject;
-  List<String> subjects = [
-    'Engineering Physics',
-    'Engineering Chemistry',
-    'Mathematics'
-  ];
 
   String? examType;
-  List<String> examTypes = ['CAT - 1', 'CAT - 2', 'FAT'];
 
   String? expectedGrade;
-  List<String> expected = ['S', 'A', 'B', 'C', 'F'];
 
   TextEditingController classAverage = TextEditingController();
   int? classAvergage;
@@ -33,6 +26,8 @@ class _MarksPageState extends State<MarksPage> {
   @override
   Widget build(BuildContext context) {
     final subjectdataCubit = SubjectDataCubit();
+
+    print(subjectdataCubit.state);
     return Scaffold(
       backgroundColor: const Color(0xFF102032),
       body: SafeArea(
@@ -67,32 +62,34 @@ class _MarksPageState extends State<MarksPage> {
                         "Enter Marks",
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 20,
+                          fontSize: 24,
                         ),
                       ),
                       IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/modify-acadDet');
+                          },
                           icon:
                               const Icon(Icons.edit, color: fieldbg, size: 20)),
                     ],
                   ),
                   const SizedBox(height: 5),
-                  dropDown("Select Subject", subjects, subject,
-                      (String? value) {
+                  dropDown("Select Subject", subjectdataCubit.state['subjects'],
+                      subject, (String? value) {
                     setState(() {
                       subject = value;
                     });
                   }),
                   const SizedBox(height: 10),
-                  dropDown("Type of Exam", examTypes, examType,
-                      (String? value) {
+                  dropDown("Type of Exam", subjectdataCubit.state['examTypes'],
+                      examType, (String? value) {
                     setState(() {
                       examType = value;
                     });
                   }),
                   const SizedBox(height: 10),
-                  dropDown("Expected Grade", expected, expectedGrade,
-                      (String? value) {
+                  dropDown("Expected Grade", subjectdataCubit.state['expected'],
+                      expectedGrade, (String? value) {
                     setState(() {
                       expectedGrade = value;
                     });
@@ -156,7 +153,7 @@ class _MarksPageState extends State<MarksPage> {
                     "List of Expected Marks",
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 20,
+                      fontSize: 24,
                     ),
                   ),
                   const SizedBox(height: 8),

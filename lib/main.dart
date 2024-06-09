@@ -6,6 +6,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:justpassapp/consts.dart';
 import 'package:justpassapp/hive/journal_entry.dart';
 import 'package:justpassapp/pages/entry_page.dart';
+import 'package:justpassapp/pages/modify.academic.details.dart';
 import 'package:justpassapp/pages/chat_bot.dart';
 import 'package:justpassapp/pages/new_entry_page.dart';
 import 'package:justpassapp/widgets/bottom_bar.dart';
@@ -70,6 +71,7 @@ class MyApp extends StatelessWidget {
                 '/gemini': (context) => const GeminiView(),
                 '/new_entry': (context) => const NewEntryPage(),
                 '/entry': (context) => const EntryPage(),
+                '/modify-acadDet': (context) => const ModifyDetailsPage(),
               });
         },
       ),
