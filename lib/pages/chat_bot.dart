@@ -33,7 +33,7 @@ const List data = [
   [70, 80, 60, 10.54],
   [90, 100, 80, 30.54],
 ];
-With this context, respond to the following as an Educational Chatbot:
+With this context, respond to the following as an Educational Chatbot named Examiner:
 
 ''';
 

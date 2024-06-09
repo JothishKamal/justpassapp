@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:justpassapp/cubit/date_cubit.dart';
 import 'package:justpassapp/cubit/recent.activity.cubit.dart';
+import 'package:justpassapp/model/reminders.dart';
+import 'package:justpassapp/widgets/reminder_item.dart';
 
 Map<int, String> _quotesMap = {
   1: "Live as if you were to die tomorrow.",
@@ -63,14 +65,14 @@ class HeaderRow extends StatelessWidget {
           builder: (context, dateState) {
             return Text(
               '${dateState.weekday}, ${dateState.day} ${dateState.month} ${dateState.year}',
-              style: const TextStyle(fontSize: 16, color: Colors.white),
+              style: const TextStyle(
+                  fontSize: 16, color: Colors.white, fontFamily: 'Raleway'),
             );
           },
         ),
         Row(
           children: [
             IconButton(
-              
               onPressed: () {
                 recentActivityCubit.updateRecentActivity(recentActivityCubit
                     .state['recentActivity']
@@ -82,7 +84,6 @@ class HeaderRow extends StatelessWidget {
               icon: const Icon(
                 Icons.smart_toy,
                 color: Colors.white,
-                
               ),
             ),
             IconButton(
@@ -114,13 +115,15 @@ class WelcomeText extends StatelessWidget {
             color: Colors.white,
             fontSize: 32,
             fontWeight: FontWeight.bold,
+            fontFamily: 'Newsreader',
           ),
         ),
         Text(
-          "KimmyBae!",
+          "Aakaash!",
           style: TextStyle(
             color: Colors.white,
             fontSize: 32,
+            fontFamily: 'Newsreader',
           ),
         ),
       ],
@@ -153,6 +156,7 @@ class QuoteSection extends StatelessWidget {
               textAlign: TextAlign.center,
               style: const TextStyle(
                 color: Colors.white,
+                fontFamily: 'Newsreader',
                 fontStyle: FontStyle.italic,
                 fontSize: 24,
               ),
@@ -203,17 +207,27 @@ class SectionTitle extends StatelessWidget {
   }
 }
 
-class ReminderBox extends StatelessWidget {
+class ReminderBox extends StatefulWidget {
   const ReminderBox({super.key});
+
+  @override
+  State<ReminderBox> createState() => _ReminderBoxState();
+}
+
+class _ReminderBoxState extends State<ReminderBox> {
+
+  final todosList = ToDo.todoList();
+  List<ToDo> _foundToDo = [];
+  final _todoController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     // Dummy data for reminders
-    final reminders = [
-      {'title': 'Complete Differential Eq. tutorial 1', 'date': '7th June'},
-      {'title': 'Revise Physics module 3', 'date': '14th June'},
-      {'title': 'Upload English DA 1', 'date': '20th June'},
-    ];
+    // final reminders = [
+    //   {'title': 'Complete Differential Eq. tutorial 1', 'date': '7th June'},
+    //   {'title': 'Revise Physics module 3', 'date': '14th June'},
+    //   {'title': 'Upload English DA 1', 'date': '20th June'},
+    // ];
 
     return Padding(
       padding: const EdgeInsets.all(5.0),
@@ -223,35 +237,41 @@ class ReminderBox extends StatelessWidget {
           color: const Color(0xFFD9D9D9),
           borderRadius: BorderRadius.circular(10),
         ),
-        child: ListView.separated(
-          itemCount: reminders.length,
-          separatorBuilder: (context, index) => const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 50),
-              child: Divider(color: Color.fromRGBO(73, 144, 226, .33))),
-          itemBuilder: (context, index) {
-            return ListTile(
-              leading: const Icon(
-                Icons.radio_button_unchecked,
-                color: Color(0xff4990E2),
-              ),
-              title: Text(
-                reminders[index]['title']!,
-                style: const TextStyle(fontSize: 16, color: Colors.black),
-              ),
-              subtitle: Text(
-                reminders[index]['date']!,
-                style: const TextStyle(fontSize: 14, color: Colors.black),
-              ),
-              trailing: const Icon(
-                Icons.more_vert,
-                color: Colors.black,
-              ),
-            );
-          },
+        child: ListView(
+          children: [
+            for (ToDo todoo in todosList)
+            ToDoItem(
+              todo: todoo,
+              onToDoChanged: _handleToDoChange,
+              onDeleteItem: _deleteToDoItem,
+            ),
+          ]
         ),
       ),
     );
   }
+
+  void _handleToDoChange(ToDo todo) {
+    setState(() {
+      todo.isDone = !todo.isDone;
+    });
+  }
+
+  void _deleteToDoItem(String id) {
+    setState(() {
+      todosList.removeWhere((item) => item.id == id);
+    });
+  }
+
+  // void _addToDoItem(String toDo) {
+  //   setState(() {
+  //     todosList.add(ToDo(
+  //       id: DateTime.now().millisecondsSinceEpoch.toString(),
+  //       todoText: toDo,
+  //     ));
+  //   });
+  //   _todoController.clear();
+  // }
 }
 
 class RecentActivityBar extends StatelessWidget {
