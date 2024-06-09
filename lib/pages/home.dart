@@ -25,9 +25,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SafeArea(
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(15),
+      child: Padding(
+        padding: EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 10),
+        child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
