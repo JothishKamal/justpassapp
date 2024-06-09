@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:justpassapp/consts.dart';
 import 'package:justpassapp/widgets/bottom_bar.dart';
 import 'package:justpassapp/cubit/theme_cubit.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'JustPassApp',
             theme: ThemeData(
-              fontFamily: 'Raleway',
+              fontFamily: GoogleFonts.poppins().fontFamily,
               colorScheme: ColorScheme.fromSeed(
                 seedColor: const Color(0xFF102033),
                 brightness: Brightness.light,
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
               brightness: Brightness.light,
             ),
             darkTheme: ThemeData(
-              fontFamily: 'ComicNeue',
+              fontFamily: GoogleFonts.poppins().fontFamily,
               colorScheme: ColorScheme.fromSeed(
                 seedColor: const Color(0xFF4A90E2),
                 brightness: Brightness.dark,
