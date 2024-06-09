@@ -42,7 +42,7 @@ class _AnalysisPageState extends State<AnalysisPage> {
                   builder: (context, dateState) {
                     return Text(
                       '${dateState.weekday}, ${dateState.day} ${dateState.month} ${dateState.year}',
-                      style: const TextStyle(fontSize: 14, color: Colors.white),
+                      style: const TextStyle(fontSize: 16, color: Colors.white),
                     );
                   },
                 ),
@@ -50,39 +50,40 @@ class _AnalysisPageState extends State<AnalysisPage> {
                   onPressed: () {},
                   icon: const Icon(
                     Icons.notifications,
-                    size: 32,
+                    size: 28,
                     color: Colors.white,
                   ),
                 ),
               ],
             ),
+            const SizedBox(height: 10),
             const Row(
               children: [
                 Text(
-                  'Hi',
+                  'Hi, ',
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 30,
-                      fontWeight: FontWeight.bold
-                    ),
+                      fontFamily: 'Newsreader',
+                      fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  'Aakaash!',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 30,
+                    fontFamily: 'Newsreader',
                   ),
-                  SizedBox(width: 5),
-                  Text(
-                    'Aakaash,',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                    ),
-                  ),
-                ],
-              ),
-              const Divider(
-                color: Color(0xFF315F95),
-                thickness: 2,
-              ),
-              SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: Column(
+                ),
+              ],
+            ),
+            const Divider(
+              color: Color(0xFF315F95),
+              thickness: 2,
+            ),
+            SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
@@ -111,28 +112,61 @@ class _AnalysisPageState extends State<AnalysisPage> {
                               isShowingMainData = !isShowingMainData;
                             });
                           },
-                          items: subjects.map<DropdownMenuItem<String>>((String e) {
+                          items: subjects
+                              .map<DropdownMenuItem<String>>((String e) {
                             return DropdownMenuItem<String>(
-                                    value: e,
-                                    child: Text(e),
-                              );})
-                              .toList(),
+                              value: e,
+                              child: Text(
+                                e,
+                                style: TextStyle(fontFamily: 'Raleway'),
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      ],
+                    ),
+                    // Legend for Graph
+                    const SizedBox(height: 10),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: const [
+                        Row(
+                          children: [
+                            CircleAvatar(backgroundColor: Colors.pink, radius: 5,),
+                            Text(
+                              ' Expected    ',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            CircleAvatar(backgroundColor: Colors.blue, radius: 5,),
+                            Text(
+                              ' Achieved',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
                     const SizedBox(height: 30),
-                    Container(
-                      height: 300,
-                      child: GraphView(isShowingMainData: isShowingMainData)
-                    ),
+                    SizedBox(
+                        height: 300,
+                        child: GraphView(isShowingMainData: isShowingMainData)),
                     const SizedBox(height: 30),
                     const Text(
                       'Performance Overview',
                       style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold
-                      ),
+                          color: Colors.white,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 10),
                     DropdownButton<String>(
@@ -151,18 +185,16 @@ class _AnalysisPageState extends State<AnalysisPage> {
                       },
                       items: subjects.map<DropdownMenuItem<String>>((String e) {
                         return DropdownMenuItem<String>(
-                                value: e,
-                                child: Text(e),
-                          );})
-                          .toList(),
+                          value: e,
+                          child: Text(e),
+                        );
+                      }).toList(),
                     ),
-                  ]
-                ),
-              )
-            ],
-          ),
-        )
-      ),
+                  ]),
+            )
+          ],
+        ),
+      )),
     );
   }
 }

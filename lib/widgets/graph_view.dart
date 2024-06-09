@@ -14,8 +14,8 @@ class GraphView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LineChart(
-            isShowingMainData ? sampleData1 : sampleData2,
-            duration: const Duration(milliseconds: 250),
+      isShowingMainData ? sampleData1 : sampleData2,
+      duration: const Duration(milliseconds: 250),
     );
   }
 
@@ -164,14 +164,16 @@ class GraphView extends StatelessWidget {
         getTitlesWidget: bottomTitleWidgets,
       );
 
-  FlGridData get gridData => const FlGridData(show: false);
+  FlGridData get gridData => const FlGridData(
+        show: true,
+        drawVerticalLine: false
+      );
 
   FlBorderData get borderData => FlBorderData(
         show: true,
         border: Border(
-          bottom:
-              BorderSide(color: Colors.blue, width: 2),
-          left: const BorderSide(color: Colors.transparent),
+          bottom: BorderSide(color: Colors.blue, width: 2),
+          left: const BorderSide(color: Colors.blue, width: 2),
           right: const BorderSide(color: Colors.transparent),
           top: const BorderSide(color: Colors.transparent),
         ),

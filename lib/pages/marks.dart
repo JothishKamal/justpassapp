@@ -182,7 +182,7 @@ Widget header() {
         builder: (context, dateState) {
           return Text(
             '${dateState.weekday}, ${dateState.day} ${dateState.month} ${dateState.year}',
-            style: const TextStyle(fontSize: 14, color: fieldbg),
+            style: const TextStyle(fontSize: 16, color: Colors.white),
           );
         },
       ),
@@ -190,8 +190,8 @@ Widget header() {
         onPressed: () {},
         icon: const Icon(
           Icons.notifications,
-          size: 32,
-          color: fieldbg,
+          size: 28,
+          color: Colors.white,
         ),
       ),
     ],

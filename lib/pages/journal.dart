@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:justpassapp/cubit/date_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:justpassapp/pages/entry_page.dart';
+import 'package:justpassapp/pages/new_entry_page.dart';
 
 class JournalPage extends StatefulWidget {
   const JournalPage({super.key});
@@ -59,7 +61,7 @@ class _JournalPageState extends State<JournalPage> {
           children: [
             header(),
             const SizedBox(height: 10),
-            salutation("Aakash"),
+            salutation("Aakaash"),
             const Divider(
               color: Color(0xFF315F95),
               thickness: 2,
@@ -76,7 +78,14 @@ class _JournalPageState extends State<JournalPage> {
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => NewEntryPage(),
+                    ),
+                  );
+                  },
                   icon: const Icon(
                     Icons.add,
                     color: Colors.white,
@@ -146,7 +155,12 @@ class _JournalPageState extends State<JournalPage> {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      // TODO: Entry Page
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => EntryPage(),
+                        ),
+                      );
                     },
                     child: Container(
                       padding: const EdgeInsets.symmetric(
@@ -204,7 +218,7 @@ Widget header() {
         builder: (context, dateState) {
           return Text(
             '${dateState.weekday}, ${dateState.day} ${dateState.month} ${dateState.year}',
-            style: const TextStyle(fontSize: 14, color: Colors.white),
+            style: const TextStyle(fontSize: 16, color: Colors.white),
           );
         },
       ),
@@ -212,7 +226,7 @@ Widget header() {
         onPressed: () {},
         icon: const Icon(
           Icons.notifications,
-          size: 32,
+          size: 28,
           color: Colors.white,
         ),
       ),
@@ -224,16 +238,15 @@ Widget salutation(String name) {
   return Row(
     children: [
       const Text(
-        'Hi',
+        'Hi, ',
         style: TextStyle(
           color: Colors.white,
           fontSize: 30,
           fontWeight: FontWeight.bold,
         ),
       ),
-      const SizedBox(width: 6),
       Text(
-        "$name,",
+        "$name!",
         style: const TextStyle(
           color: Colors.white,
           fontSize: 30,
