@@ -55,7 +55,8 @@ class _JournalPageState extends State<JournalPage> {
       backgroundColor: const Color(0xFF102032),
       body: SafeArea(
           child: Padding(
-        padding: const EdgeInsets.all(15),
+        padding:
+            const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -79,12 +80,12 @@ class _JournalPageState extends State<JournalPage> {
                 ),
                 IconButton(
                   onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => NewEntryPage(),
-                    ),
-                  );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => NewEntryPage(),
+                      ),
+                    );
                   },
                   icon: const Icon(
                     Icons.add,

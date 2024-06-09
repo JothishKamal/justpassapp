@@ -30,74 +30,152 @@ class _AnalysisPageState extends State<AnalysisPage> {
     return Scaffold(
       backgroundColor: const Color(0xFF102032),
       body: SafeArea(
+        child: SingleChildScrollView(
           child: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            padding: const EdgeInsets.all(15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                BlocBuilder<DateCubit, DateState>(
-                  builder: (context, dateState) {
-                    return Text(
-                      '${dateState.weekday}, ${dateState.day} ${dateState.month} ${dateState.year}',
-                      style: const TextStyle(fontSize: 16, color: Colors.white),
-                    );
-                  },
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.notifications,
-                    size: 28,
-                    color: Colors.white,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 10),
-            const Row(
-              children: [
-                Text(
-                  'Hi, ',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontFamily: 'Newsreader',
-                      fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  'Aakaash!',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 30,
-                    fontFamily: 'Newsreader',
-                  ),
-                ),
-              ],
-            ),
-            const Divider(
-              color: Color(0xFF315F95),
-              thickness: 2,
-            ),
-            SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    BlocBuilder<DateCubit, DateState>(
+                      builder: (context, dateState) {
+                        return Text(
+                          '${dateState.weekday}, ${dateState.day} ${dateState.month} ${dateState.year}',
+                          style: const TextStyle(
+                              fontSize: 16, color: Colors.white),
+                        );
+                      },
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.notifications,
+                        size: 28,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                const Row(
+                  children: [
+                    Text(
+                      'Hi, ',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      'Aakaash!',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                      ),
+                    ),
+                  ],
+                ),
+                const Divider(
+                  color: Color(0xFF315F95),
+                  thickness: 2,
+                ),
+                SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'My Analysis',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 25,
-                            fontStyle: FontStyle.italic,
-                          ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'My Analysis',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 25,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
+                            SizedBox(width: 20),
+                            DropdownButton<String>(
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                              ),
+                              dropdownColor: const Color(0xFF102032),
+                              padding: EdgeInsets.all(5),
+                              value: dropDownValue,
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  dropDownValue = newValue!;
+                                  isShowingMainData = !isShowingMainData;
+                                });
+                              },
+                              items: subjects
+                                  .map<DropdownMenuItem<String>>((String e) {
+                                return DropdownMenuItem<String>(
+                                  value: e,
+                                  child: Text(
+                                    e,
+                                    style: TextStyle(fontFamily: 'Raleway'),
+                                  ),
+                                );
+                              }).toList(),
+                            ),
+                          ],
                         ),
-                        SizedBox(width: 20),
+                        // Legend for Graph
+                        const SizedBox(height: 10),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: const [
+                            Row(
+                              children: [
+                                CircleAvatar(
+                                  backgroundColor: Colors.pink,
+                                  radius: 5,
+                                ),
+                                Text(
+                                  ' Expected    ',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                CircleAvatar(
+                                  backgroundColor: Colors.blue,
+                                  radius: 5,
+                                ),
+                                Text(
+                                  ' Achieved',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 30),
+                        SizedBox(
+                            height: 300,
+                            child: GraphView(
+                                isShowingMainData: isShowingMainData)),
+                        const SizedBox(height: 30),
+                        const Text(
+                          'Performance Overview',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(height: 10),
                         DropdownButton<String>(
                           style: TextStyle(
                             color: Colors.white,
@@ -116,85 +194,17 @@ class _AnalysisPageState extends State<AnalysisPage> {
                               .map<DropdownMenuItem<String>>((String e) {
                             return DropdownMenuItem<String>(
                               value: e,
-                              child: Text(
-                                e,
-                                style: TextStyle(fontFamily: 'Raleway'),
-                              ),
+                              child: Text(e),
                             );
                           }).toList(),
                         ),
-                      ],
-                    ),
-                    // Legend for Graph
-                    const SizedBox(height: 10),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: const [
-                        Row(
-                          children: [
-                            CircleAvatar(backgroundColor: Colors.pink, radius: 5,),
-                            Text(
-                              ' Expected    ',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 15,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            CircleAvatar(backgroundColor: Colors.blue, radius: 5,),
-                            Text(
-                              ' Achieved',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 15,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 30),
-                    SizedBox(
-                        height: 300,
-                        child: GraphView(isShowingMainData: isShowingMainData)),
-                    const SizedBox(height: 30),
-                    const Text(
-                      'Performance Overview',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(height: 10),
-                    DropdownButton<String>(
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                      ),
-                      dropdownColor: const Color(0xFF102032),
-                      padding: EdgeInsets.all(5),
-                      value: dropDownValue,
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          dropDownValue = newValue!;
-                          isShowingMainData = !isShowingMainData;
-                        });
-                      },
-                      items: subjects.map<DropdownMenuItem<String>>((String e) {
-                        return DropdownMenuItem<String>(
-                          value: e,
-                          child: Text(e),
-                        );
-                      }).toList(),
-                    ),
-                  ]),
-            )
-          ],
+                      ]),
+                )
+              ],
+            ),
+          ),
         ),
-      )),
+      ),
     );
   }
 }
