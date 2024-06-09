@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:justpassapp/consts.dart';
 import 'package:justpassapp/cubit/date_cubit.dart';
@@ -29,7 +31,7 @@ class _MarksPageState extends State<MarksPage> {
   Widget build(BuildContext context) {
     final subjectdataCubit = SubjectDataCubit();
 
-    print(subjectdataCubit.state);
+    log(subjectdataCubit.state.toString());
     return Scaffold(
       backgroundColor: const Color(0xFF102032),
       body: SafeArea(
@@ -133,7 +135,7 @@ class _MarksPageState extends State<MarksPage> {
                                 .updateClassAverage(classAverage.text);
                             subjectdataCubit.updateSubject(subject);
                             subjectdataCubit.updateExpectedGrade(expectedGrade);
-                            print(subjectdataCubit.state);
+                            log(subjectdataCubit.state.toString());
                           },
                           style: TextButton.styleFrom(
                             foregroundColor: Colors.black,
