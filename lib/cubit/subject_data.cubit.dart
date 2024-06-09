@@ -26,11 +26,15 @@ class SubjectDataCubit extends Cubit<Map> {
   }
 
   void updateSubject(String? subject) {
-    emit(state..['subject'] = subject);
+    final newState = state;
+    newState['subject'] = subject;
+    emit(newState);
   }
 
   void updateExamType(String? examType) {
-    emit(state..['examType'] = examType);
+    final newState = state;
+    newState['examType'] = examType;
+    emit(newState);
   }
 
   void updateExpectedGrade(String? expectedGrade) {
