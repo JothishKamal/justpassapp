@@ -1,9 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:justpassapp/consts.dart';
 import 'package:justpassapp/cubit/date_cubit.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:justpassapp/cubit/recent_activity.dart';
 import 'package:justpassapp/cubit/subject_data.dart';
 import 'package:justpassapp/widgets/marks.table.dart';
@@ -17,26 +17,18 @@ class MarksPage extends StatefulWidget {
 
 class _MarksPageState extends State<MarksPage> {
   String? subject;
-
   String? examType;
-
-  String? expectedGrade;
-
-  TextEditingController classAverage = TextEditingController();
-  int? classAvergage;
-
-  Map subjectData = {};
+  TextEditingController expectedMarks = TextEditingController();
+  TextEditingController actualMarks = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final subjectdataCubit = SubjectDataCubit();
-
-    log(subjectdataCubit.state.toString());
     return Scaffold(
       backgroundColor: const Color(0xFF102032),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.only(left: 0, right: 0, top: 15, bottom: 10),
+          padding:
+              const EdgeInsets.only(left: 0, right: 0, top: 15, bottom: 10),
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(15),
@@ -70,58 +62,94 @@ class _MarksPageState extends State<MarksPage> {
                         ),
                       ),
                       IconButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/modify-acadDet');
-                          },
-                          icon:
-                              const Icon(Icons.edit, color: fieldbg, size: 20)),
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/modify-acadDet');
+                        },
+                        icon: const Icon(Icons.edit, color: fieldbg, size: 20),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 5),
-                  dropDown("Select Subject", subjectdataCubit.state['subjects'],
-                      subject, (String? value) {
-                    setState(() {
-                      subject = value;
-                    });
-                  }),
-                  const SizedBox(height: 10),
-                  dropDown("Type of Exam", subjectdataCubit.state['examTypes'],
-                      examType, (String? value) {
-                    setState(() {
-                      examType = value;
-                    });
-                  }),
-                  const SizedBox(height: 10),
-                  dropDown("Expected Grade", subjectdataCubit.state['expected'],
-                      expectedGrade, (String? value) {
-                    setState(() {
-                      expectedGrade = value;
-                    });
-                  }),
-                  const SizedBox(height: 10),
-                  Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                    decoration: BoxDecoration(
-                      color: fieldbg,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: TextFormField(
-                      controller: classAverage,
-                      onChanged: (value) {
-                        if (value.isNotEmpty) {
-                          classAvergage = int.parse(value);
-                          subjectdataCubit.updateClassAverage(value);
-                        }
-                      },
-                      decoration: const InputDecoration(
-                        isDense: true,
-                        isCollapsed: true,
-                        hintText: 'Class average',
-                        hintStyle: TextStyle(color: Colors.black),
-                        border: InputBorder.none,
-                      ),
-                    ),
+                  BlocBuilder<SubjectDataCubit, Map<String, dynamic>>(
+                    builder: (context, state) {
+                      final subjects = state['subjects'] ?? [];
+                      final examTypes = state['examTypes'] ?? [];
+                      subject = state['subject'];
+                      examType = state['examType'];
+                      expectedMarks.text =
+                          state['expectedMarks']?.toString() ?? '';
+                      actualMarks.text = state['actualMarks']?.toString() ?? '';
+
+                      return Column(
+                        children: [
+                          dropDown("Select Subject", subjects, subject,
+                              (String? value) {
+                            setState(() {
+                              subject = value;
+                            });
+                          }),
+                          const SizedBox(height: 10),
+                          dropDown("Type of Exam", examTypes, examType,
+                              (String? value) {
+                            setState(() {
+                              examType = value;
+                            });
+                          }),
+                          const SizedBox(height: 10),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 5),
+                            decoration: BoxDecoration(
+                              color: fieldbg,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: TextFormField(
+                              controller: expectedMarks,
+                              onChanged: (value) {
+                                if (value.isNotEmpty) {
+                                  context
+                                      .read<SubjectDataCubit>()
+                                      .updateExpectedMarks(value);
+                                }
+                              },
+                              decoration: const InputDecoration(
+                                isDense: true,
+                                isCollapsed: true,
+                                hintText: 'Expected marks',
+                                hintStyle: TextStyle(color: Colors.black),
+                                border: InputBorder.none,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 5),
+                            decoration: BoxDecoration(
+                              color: fieldbg,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: TextFormField(
+                              controller: actualMarks,
+                              onChanged: (value) {
+                                if (value.isNotEmpty) {
+                                  context
+                                      .read<SubjectDataCubit>()
+                                      .updateActualMarks(value);
+                                }
+                              },
+                              decoration: const InputDecoration(
+                                isDense: true,
+                                isCollapsed: true,
+                                hintText: 'Actual marks',
+                                hintStyle: TextStyle(color: Colors.black),
+                                border: InputBorder.none,
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
                   ),
                   const SizedBox(height: 10),
                   Row(
@@ -129,13 +157,22 @@ class _MarksPageState extends State<MarksPage> {
                       Expanded(
                         child: TextButton(
                           onPressed: () {
-                            subjectdataCubit.updateExamType(examType);
-
-                            subjectdataCubit
-                                .updateClassAverage(classAverage.text);
-                            subjectdataCubit.updateSubject(subject);
-                            subjectdataCubit.updateExpectedGrade(expectedGrade);
-                            log(subjectdataCubit.state.toString());
+                            context
+                                .read<SubjectDataCubit>()
+                                .updateExamType(examType);
+                            context
+                                .read<SubjectDataCubit>()
+                                .updateActualMarks(actualMarks.text);
+                            context
+                                .read<SubjectDataCubit>()
+                                .updateSubject(subject);
+                            context
+                                .read<SubjectDataCubit>()
+                                .updateExpectedMarks(expectedMarks.text);
+                            log(context
+                                .read<SubjectDataCubit>()
+                                .state
+                                .toString());
                           },
                           style: TextButton.styleFrom(
                             foregroundColor: Colors.black,
@@ -161,7 +198,7 @@ class _MarksPageState extends State<MarksPage> {
                     ),
                   ),
                   const SizedBox(height: 8),
-                  marksTable(),
+                  marksTable(context),
                 ],
               ),
             ),
@@ -180,18 +217,19 @@ class _MarksPageState extends State<MarksPage> {
         borderRadius: BorderRadius.circular(10),
       ),
       child: DropdownButton<String>(
-          isExpanded: true,
-          isDense: true,
-          underline: const SizedBox(),
-          items: items.map((String e) => dropdownItem(e)).toList(),
-          onChanged: onChanged,
-          value: selectedValue,
-          hint: Text(
-            '$hint ',
-            style: const TextStyle(
-              color: Colors.black,
-            ),
-          )),
+        isExpanded: true,
+        isDense: true,
+        underline: const SizedBox(),
+        items: items.map((String e) => dropdownItem(e)).toList(),
+        onChanged: onChanged,
+        value: selectedValue,
+        hint: Text(
+          '$hint ',
+          style: const TextStyle(
+            color: Colors.black,
+          ),
+        ),
+      ),
     );
   }
 }

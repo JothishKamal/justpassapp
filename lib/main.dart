@@ -4,6 +4,7 @@ import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:justpassapp/consts.dart';
+import 'package:justpassapp/cubit/subject_data.dart';
 import 'package:justpassapp/hive/journal_entry.dart';
 import 'package:justpassapp/pages/entry_page.dart';
 import 'package:justpassapp/pages/modify.academic.details.dart';
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
           create: (context) =>
               JournalCubit(Hive.box<JournalEntry>('journal_entries')),
         ),
+        BlocProvider<SubjectDataCubit>(create: (context) => SubjectDataCubit()),
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (context, themeState) {

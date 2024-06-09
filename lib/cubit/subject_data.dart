@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SubjectDataCubit extends Cubit<Map> {
+class SubjectDataCubit extends Cubit<Map<String, dynamic>> {
   SubjectDataCubit()
       : super({
           'subject': null,
@@ -11,43 +11,32 @@ class SubjectDataCubit extends Cubit<Map> {
           ],
           'examType': null,
           'examTypes': ["Cat - 1", "Cat - 2", "FAT"],
-          'expectedGrade': null,
-          'expected': ['S', 'A', 'B', 'C', 'D', 'F'],
-          'classAverage': null,
+          'expectedMarks': null,
+          'grades': ['S', 'A', 'B', 'C', 'D', 'F'],
+          'actualMarks': null,
         });
+
   void updateSubjects(List<String> subjects) {
-    final newState = state;
-    newState['subjects'] = subjects;
-    emit(newState);
+    emit({...state, 'subjects': subjects});
   }
 
   void updateExamTypes(List<String> examTypes) {
-    final newState = state;
-    newState['examTypes'] = examTypes;
-    emit(newState);
-  }
-
-  void updateExpectedGrades(List<String> expectedGrades) {
-    emit(state..['expected'] = expectedGrades);
+    emit({...state, 'examTypes': examTypes});
   }
 
   void updateSubject(String? subject) {
-    final newState = state;
-    newState['subject'] = subject;
-    emit(newState);
+    emit({...state, 'subject': subject});
   }
 
   void updateExamType(String? examType) {
-    final newState = state;
-    newState['examType'] = examType;
-    emit(newState);
+    emit({...state, 'examType': examType});
   }
 
-  void updateExpectedGrade(String? expectedGrade) {
-    emit(state..['expectedGrade'] = expectedGrade);
+  void updateExpectedMarks(String? expectedMarks) {
+    emit({...state, 'expectedMarks': expectedMarks});
   }
 
-  void updateClassAverage(String? classAverage) {
-    emit(state..['classAverage'] = classAverage);
+  void updateActualMarks(String? actualMarks) {
+    emit({...state, 'actualMarks': actualMarks});
   }
 }
