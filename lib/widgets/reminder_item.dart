@@ -17,7 +17,7 @@ class ToDoItem extends StatefulWidget {
   State<ToDoItem> createState() => _ToDoItemState();
 }
 
-Color binColor = Colors.redAccent;
+Color binColor = Colors.black;
 
 class _ToDoItemState extends State<ToDoItem> {
   @override
@@ -27,12 +27,8 @@ class _ToDoItemState extends State<ToDoItem> {
         // print('Clicked on Todo Item.');
         widget.onToDoChanged(widget.todo);
       },
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-      ),
-      contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-      leading: const Icon(
-        Icons.radio_button_unchecked,
+      leading: Icon(
+        widget.todo.isDone ? Icons.radio_button_checked : Icons.radio_button_unchecked,
         color: Color(0xff4990E2),
       ),
       title: Text(
