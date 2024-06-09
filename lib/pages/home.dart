@@ -70,6 +70,7 @@ class HeaderRow extends StatelessWidget {
         Row(
           children: [
             IconButton(
+              
               onPressed: () {
                 recentActivityCubit.updateRecentActivity(recentActivityCubit
                     .state['recentActivity']
@@ -81,6 +82,7 @@ class HeaderRow extends StatelessWidget {
               icon: const Icon(
                 Icons.smart_toy,
                 color: Colors.white,
+                
               ),
             ),
             IconButton(
@@ -151,7 +153,6 @@ class QuoteSection extends StatelessWidget {
               textAlign: TextAlign.center,
               style: const TextStyle(
                 color: Colors.white,
-                
                 fontStyle: FontStyle.italic,
                 fontSize: 24,
               ),

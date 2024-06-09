@@ -33,7 +33,6 @@ class AnalysisPage extends StatefulWidget {
 
 class _AnalysisPageState extends State<AnalysisPage> {
   String dropDown1Value = subjects[0];
-  String dropDown2Value = subjects[0];
 
   final recentActivityCubit = RecentActivityCubit();
 
@@ -208,27 +207,6 @@ class _AnalysisPageState extends State<AnalysisPage> {
                               fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(height: 10),
-                        DropdownButton<String>(
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                          ),
-                          dropdownColor: const Color(0xFF102032),
-                          padding: EdgeInsets.all(5),
-                          value: dropDown2Value,
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              dropDown2Value = newValue!;
-                            });
-                          },
-                          items: subjects
-                              .map<DropdownMenuItem<String>>((String e) {
-                            return DropdownMenuItem<String>(
-                              value: e,
-                              child: Text(e),
-                            );
-                          }).toList(),
-                        ),
                         Container(
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
@@ -238,7 +216,7 @@ class _AnalysisPageState extends State<AnalysisPage> {
                             children: [
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
+                                children: const [
                                   Text(
                                     'Average Mark:',
                                     style: TextStyle(
@@ -290,7 +268,7 @@ class _AnalysisPageState extends State<AnalysisPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    '${data[subjects.indexOf(dropDown2Value)][0]}',
+                                    '${data[subjects.indexOf(dropDown1Value)][0]}',
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
@@ -299,7 +277,7 @@ class _AnalysisPageState extends State<AnalysisPage> {
                                   ),
                                   SizedBox(height: 10),
                                   Text(
-                                    '${data[subjects.indexOf(dropDown2Value)][1]}',
+                                    '${data[subjects.indexOf(dropDown1Value)][1]}',
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
@@ -308,7 +286,7 @@ class _AnalysisPageState extends State<AnalysisPage> {
                                   ),
                                   SizedBox(height: 10),
                                   Text(
-                                    '${data[subjects.indexOf(dropDown2Value)][2]}',
+                                    '${data[subjects.indexOf(dropDown1Value)][2]}',
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
@@ -326,7 +304,7 @@ class _AnalysisPageState extends State<AnalysisPage> {
                                   ),
                                   SizedBox(height: 10),
                                   Text(
-                                    '${data[subjects.indexOf(dropDown2Value)][3]}%',
+                                    '${data[subjects.indexOf(dropDown1Value)][3]}%',
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
