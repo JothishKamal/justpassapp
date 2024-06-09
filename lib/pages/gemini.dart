@@ -68,7 +68,20 @@ class _GeminiViewState extends State<GeminiView> {
                   getChatResponse(m);
                 },
                 messages: _messages,
+                inputOptions: InputOptions(
+                  alwaysShowSend: true,
+                  sendButtonBuilder: (send) {
+                    return IconButton(
+                      icon: const Icon(
+                        Icons.send,
+                        color: Colors.white,
+                      ),
+                      onPressed: send,
+                    );
+                  },
+                ),
                 messageOptions: const MessageOptions(
+                  
                   currentUserContainerColor: Color.fromARGB(255, 253, 253, 253),
                   containerColor: Color(0xFF424C71),
                   textColor: Colors.white,
