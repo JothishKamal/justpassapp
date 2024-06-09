@@ -17,7 +17,7 @@ class ToDoItem extends StatefulWidget {
   State<ToDoItem> createState() => _ToDoItemState();
 }
 
-Color binColor = Colors.redAccent;
+Color binColor = Colors.black;
 
 class _ToDoItemState extends State<ToDoItem> {
   @override

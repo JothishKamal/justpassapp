@@ -66,7 +66,9 @@ class HeaderRow extends StatelessWidget {
             return Text(
               '${dateState.weekday}, ${dateState.day} ${dateState.month} ${dateState.year}',
               style: const TextStyle(
-                  fontSize: 16, color: Colors.white, fontFamily: 'Raleway'),
+                fontSize: 16,
+                color: Colors.white,
+              ),
             );
           },
         ),
@@ -115,7 +117,6 @@ class WelcomeText extends StatelessWidget {
             color: Colors.white,
             fontSize: 32,
             fontWeight: FontWeight.bold,
-            fontFamily: 'Newsreader',
           ),
         ),
         Text(
@@ -123,7 +124,6 @@ class WelcomeText extends StatelessWidget {
           style: TextStyle(
             color: Colors.white,
             fontSize: 32,
-            fontFamily: 'Newsreader',
           ),
         ),
       ],
@@ -156,7 +156,6 @@ class QuoteSection extends StatelessWidget {
               textAlign: TextAlign.center,
               style: const TextStyle(
                 color: Colors.white,
-                fontFamily: 'Newsreader',
                 fontStyle: FontStyle.italic,
                 fontSize: 24,
               ),
@@ -236,14 +235,24 @@ class _ReminderBoxState extends State<ReminderBox> {
           color: const Color(0xFFD9D9D9),
           borderRadius: BorderRadius.circular(10),
         ),
-        child: ListView(children: [
-          for (ToDo todoo in todosList)
-            ToDoItem(
-              todo: todoo,
+        child: ListView.separated(
+          itemCount: todosList.length,
+          itemBuilder: (context, index) {
+            final todo = todosList[index];
+            return ToDoItem(
+              todo: todo,
               onToDoChanged: _handleToDoChange,
               onDeleteItem: _deleteToDoItem,
+            );
+          },
+          separatorBuilder: (context, index) => Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 50.0),
+            child: const Divider(
+              color: Color.fromRGBO(73, 144, 226, 0.33),
+              thickness: 1,
             ),
-        ]),
+          ),
+        ),
       ),
     );
   }
