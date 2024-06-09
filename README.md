@@ -60,15 +60,16 @@ Add your own exams, subjects, grades, and marks for a personalized experience.
 "Based on the provided data, your overall performance is quite good. You have consistently scored above average in all subjects. In Differential, you have shown a remarkable improvement of 21.54%, indicating your dedication and hard work. You have also performed exceptionally well in Soft Skills, with an average score of 90 and a highest score of 100. Keep up the good work, and try to maintain this level of performance in the future."
 
 ## Meet The Team:
-- **Pravenraam Shankar, Manager
-- **Laksh Bharani, Tech
-- **Jothish Kamal, Tech
-- **Aakaash SS, Tech
-- **Suhani Pasricha, Designer
-- **Sarah George, Designer
-  # Special Thanks to:
-- **Aditya Sareen, Management 
-- **Aarabi, Tech 
+- Pravenraam Shankar, Manager
+- Laksh Bharani, Tech
+- Jothish Kamal, Tech
+- Aakaash SS, Tech
+- Suhani Pasricha, Designer
+- Sarah George, Designer
+
+# Special Thanks to:
+- Aditya Sareen, Management 
+- Aarabi, Tech 
 
 
 ## Get Started
