@@ -4,11 +4,15 @@ class SubjectDataCubit extends Cubit<Map> {
   SubjectDataCubit()
       : super({
           'subject': null,
-          'subjects': ['Select Subject'],
+          'subjects': [
+            "Engineering Mathematics",
+            "Engineering Physics",
+            "Engineering Chemistry"
+          ],
           'examType': null,
-          'examTypes': ['Type of Exam'],
+          'examTypes': ["Cat - 1", "Cat - 2", "FAT"],
           'expectedGrade': null,
-          'expected': ['Expected Grade'],
+          'expected': ['S', 'A', 'B', 'C', 'D', 'F'],
           'classAverage': null,
         });
   void updateSubjects(List<String> subjects) {

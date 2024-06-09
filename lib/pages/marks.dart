@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:justpassapp/consts.dart';
 import 'package:justpassapp/cubit/date_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:justpassapp/cubit/recent.activity.cubit.dart';
-import 'package:justpassapp/cubit/subject_data.cubit.dart';
+import 'package:justpassapp/cubit/recent_activity.dart';
+import 'package:justpassapp/cubit/subject_data.dart';
 import 'package:justpassapp/widgets/marks.table.dart';
 
 class MarksPage extends StatefulWidget {
@@ -22,6 +22,8 @@ class _MarksPageState extends State<MarksPage> {
 
   TextEditingController classAverage = TextEditingController();
   int? classAvergage;
+
+  Map subjectData = {};
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:justpassapp/consts.dart';
-import 'package:justpassapp/cubit/subject_data.cubit.dart';
+import 'package:justpassapp/cubit/subject_data.dart';
 
 Widget marksTable() {
   final subjectdataCubit = SubjectDataCubit();

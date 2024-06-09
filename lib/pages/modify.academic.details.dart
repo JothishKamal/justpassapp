@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:justpassapp/consts.dart';
-import 'package:justpassapp/cubit/subject_data.cubit.dart';
+import 'package:justpassapp/cubit/subject_data.dart';
 
 class ModifyDetailsPage extends StatefulWidget {
   const ModifyDetailsPage({super.key});

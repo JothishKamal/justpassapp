@@ -39,9 +39,7 @@ class RecentActivityCubit extends Cubit<Map> {
           ],
         });
 
-  void updateRecentActivity(List recentActivity) {
-   
-  }
+  void updateRecentActivity(List recentActivity) {}
 }
 
 String convertDate(DateTime date) {

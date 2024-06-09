@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:justpassapp/cubit/date_cubit.dart';
-import 'package:justpassapp/cubit/recent.activity.cubit.dart';
+import 'package:justpassapp/cubit/recent_activity.dart';
 
 Map<int, String> _quotesMap = {
   1: "Live as if you were to die tomorrow.",

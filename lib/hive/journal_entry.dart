@@ -11,7 +11,7 @@ class JournalEntry extends HiveObject {
   String content;
 
   @HiveField(2)
-  DateTime date;
+  String date;
 
   @HiveField(3)
   List<String> imagePaths;

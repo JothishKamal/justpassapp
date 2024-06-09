@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:justpassapp/cubit/date_cubit.dart';
-import 'package:justpassapp/cubit/recent.activity.cubit.dart';
+import 'package:justpassapp/cubit/recent_activity.dart';
 import 'package:justpassapp/cubit/journal_cubit.dart';
 
 class JournalPage extends StatefulWidget {
@@ -110,57 +110,68 @@ class _JournalPageState extends State<JournalPage> {
                       return const Center(child: CircularProgressIndicator());
                     } else if (state is JournalLoaded) {
                       final entries = state.entries;
-                      return ListView.separated(
-                        itemCount: entries.length,
-                        separatorBuilder: (context, index) =>
-                            const SizedBox(height: 20),
-                        itemBuilder: (context, index) {
-                          final entry = entries[index];
-                          return GestureDetector(
-                            onTap: () {
-                              Navigator.pushNamed(context, '/entry',
-                                  arguments: entry);
-                            },
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 15),
-                              decoration: BoxDecoration(
-                                color: const Color.fromARGB(255, 217, 217, 217),
-                                borderRadius: BorderRadius.circular(15),
+                      return entries.isEmpty
+                          ? Center(
+                              child: Text(
+                              'No entries found',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
                               ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    entry.date.toString(),
-                                    style: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 15,
+                            ))
+                          : ListView.separated(
+                              itemCount: entries.length,
+                              separatorBuilder: (context, index) =>
+                                  const SizedBox(height: 20),
+                              itemBuilder: (context, index) {
+                                final entry = entries[index];
+                                return GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushNamed(context, '/entry',
+                                        arguments: entry);
+                                  },
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 15),
+                                    decoration: BoxDecoration(
+                                      color: const Color.fromARGB(
+                                          255, 217, 217, 217),
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          entry.date.toString(),
+                                          style: const TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 15,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 5),
+                                        Text(
+                                          entry.title,
+                                          style: const TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 5),
+                                        Text(
+                                          entry.content,
+                                          style: const TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 15,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                  const SizedBox(height: 5),
-                                  Text(
-                                    entry.title,
-                                    style: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 5),
-                                  Text(
-                                    entry.content,
-                                    style: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 15,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        },
-                      );
+                                );
+                              },
+                            );
                     } else {
                       return const Center(child: Text('No entries found.'));
                     }
