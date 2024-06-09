@@ -54,7 +54,7 @@ class _MarksPageState extends State<MarksPage> {
                   const Text(
                     'My Expected Marks',
                     style: TextStyle(
-                      color: fieldbg,
+                      color: Colors.white,
                       fontSize: 25,
                       fontStyle: FontStyle.italic,
                     ),
@@ -66,7 +66,7 @@ class _MarksPageState extends State<MarksPage> {
                       const Text(
                         "Enter Marks",
                         style: TextStyle(
-                          color: fieldbg,
+                          color: Colors.white,
                           fontSize: 20,
                         ),
                       ),
@@ -155,7 +155,7 @@ class _MarksPageState extends State<MarksPage> {
                   const Text(
                     "List of Expected Marks",
                     style: TextStyle(
-                      color: fieldbg,
+                      color: Colors.white,
                       fontSize: 20,
                     ),
                   ),

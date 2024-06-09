@@ -63,8 +63,7 @@ class HeaderRow extends StatelessWidget {
           builder: (context, dateState) {
             return Text(
               '${dateState.weekday}, ${dateState.day} ${dateState.month} ${dateState.year}',
-              style: const TextStyle(
-                  fontSize: 16, color: Colors.white, fontFamily: 'Raleway'),
+              style: const TextStyle(fontSize: 16, color: Colors.white),
             );
           },
         ),
@@ -113,7 +112,6 @@ class WelcomeText extends StatelessWidget {
             color: Colors.white,
             fontSize: 32,
             fontWeight: FontWeight.bold,
-            fontFamily: 'Newsreader',
           ),
         ),
         Text(
@@ -121,7 +119,6 @@ class WelcomeText extends StatelessWidget {
           style: TextStyle(
             color: Colors.white,
             fontSize: 32,
-            fontFamily: 'Newsreader',
           ),
         ),
       ],
@@ -154,7 +151,7 @@ class QuoteSection extends StatelessWidget {
               textAlign: TextAlign.center,
               style: const TextStyle(
                 color: Colors.white,
-                fontFamily: 'Newsreader',
+                
                 fontStyle: FontStyle.italic,
                 fontSize: 24,
               ),
