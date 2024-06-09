@@ -62,14 +62,14 @@ class ProfilePage extends StatelessWidget {
                         height: 30,
                       ),
                       const Text(
-                        'KimmyBae Saathya',
+                        'KimmyBae Sathya',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 25,
                         ),
                       ),
                       const Text(
-                        '@KimmyBaesaathya',
+                        '@KimmyBaesathya',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -100,7 +100,7 @@ class ProfilePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 _buildPersonalInfo(
-                    Icons.email_outlined, 'KimmyBaesaathya@gmail.com'),
+                    Icons.email_outlined, 'KimmyBaesathya@gmail.com'),
                 const SizedBox(height: 10),
                 _buildPersonalInfo(Icons.phone_outlined, '+91 6969696969'),
                 const SizedBox(height: 10),
