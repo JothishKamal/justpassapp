@@ -35,114 +35,133 @@ class _MarksPageState extends State<MarksPage> {
     return Scaffold(
       backgroundColor: const Color(0xFF102032),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                header(),
-                const SizedBox(height: 10),
-                salutation("Aakaash"),
-                const Divider(
-                  color: Color(0xFF315F95),
-                  thickness: 2,
-                ),
-                const Text(
-                  'My Expected Marks',
-                  style: TextStyle(
-                    color: fieldbg,
-                    fontSize: 25,
-                    fontStyle: FontStyle.italic,
+        child: Padding(
+          padding: EdgeInsets.only(left: 8, right: 8, top: 8, bottom: 10),
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(15),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  header(),
+                  const SizedBox(height: 10),
+                  salutation("Aakaash"),
+                  const Divider(
+                    color: Color(0xFF315F95),
+                    thickness: 2,
                   ),
-                ),
-                const SizedBox(height: 18),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      "Enter Marks",
-                      style: TextStyle(
-                        color: fieldbg,
-                        fontSize: 20,
+                  const Text(
+                    'My Expected Marks',
+                    style: TextStyle(
+                      color: fieldbg,
+                      fontSize: 25,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                  const SizedBox(height: 18),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        "Enter Marks",
+                        style: TextStyle(
+                          color: fieldbg,
+                          fontSize: 20,
+                        ),
                       ),
-                    ),
-                    IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.edit, color: fieldbg, size: 20)),
-                  ],
-                ),
-                const SizedBox(height: 10),
-                dropDown("Select Subject", subjects, subject, (String? value) {
-                  subjectdataCubit.updateSubject(value);
-                  setState(() {
-                    subject = value;
-                  });
-                }),
-                const SizedBox(height: 10),
-                dropDown("Type of Exam", examTypes, examType, (String? value) {
-                  subjectdataCubit.updateExamType(value);
-                  setState(() {
-                    examType = value;
-                  });
-                }),
-                const SizedBox(height: 10),
-                dropDown("Expected Grade", expected, expectedGrade,
-                    (String? value) {
-                  subjectdataCubit.updateExpectedGrade(value);
-                  setState(() {
-                    expectedGrade = value;
-                  });
-                }),
-                const SizedBox(height: 10),
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  decoration: BoxDecoration(
-                    color: fieldbg,
-                    borderRadius: BorderRadius.circular(10),
+                      IconButton(
+                          onPressed: () {},
+                          icon:
+                              const Icon(Icons.edit, color: fieldbg, size: 20)),
+                    ],
                   ),
-                  child: TextFormField(
-                    controller: classAverage,
-                    onChanged: (value) {
-                      if (value.isNotEmpty) {
-                        classAvergage = int.parse(value);
-                        subjectdataCubit.updateClassAverage(value);
-                      }
-                    },
-                    decoration: const InputDecoration(
-                      isDense: true,
-                      isCollapsed: true,
-                      hintText: 'Class average',
-                      hintStyle: TextStyle(color: Colors.black),
-                      border: InputBorder.none,
-                    ),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {},
-                  child: Text("Submit"),
-                  style: TextButton.styleFrom(
-                    foregroundColor: Colors.black,
-                    backgroundColor: Color.fromARGB(255, 73, 144, 226),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10),
-                    shape: RoundedRectangleBorder(
+                  const SizedBox(height: 10),
+                  dropDown("Select Subject", subjects, subject,
+                      (String? value) {
+                    setState(() {
+                      subject = value;
+                    });
+                  }),
+                  const SizedBox(height: 10),
+                  dropDown("Type of Exam", examTypes, examType,
+                      (String? value) {
+                    setState(() {
+                      examType = value;
+                    });
+                  }),
+                  const SizedBox(height: 10),
+                  dropDown("Expected Grade", expected, expectedGrade,
+                      (String? value) {
+                    setState(() {
+                      expectedGrade = value;
+                    });
+                  }),
+                  const SizedBox(height: 10),
+                  Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    decoration: BoxDecoration(
+                      color: fieldbg,
                       borderRadius: BorderRadius.circular(10),
                     ),
+                    child: TextFormField(
+                      controller: classAverage,
+                      onChanged: (value) {
+                        if (value.isNotEmpty) {
+                          classAvergage = int.parse(value);
+                          subjectdataCubit.updateClassAverage(value);
+                        }
+                      },
+                      decoration: const InputDecoration(
+                        isDense: true,
+                        isCollapsed: true,
+                        hintText: 'Class average',
+                        hintStyle: TextStyle(color: Colors.black),
+                        border: InputBorder.none,
+                      ),
+                    ),
                   ),
-                ),
-                const SizedBox(height: 20),
-                const Text(
-                  "List of Expected Marks",
-                  style: TextStyle(
-                    color: fieldbg,
-                    fontSize: 20,
+                  const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: TextButton(
+                          onPressed: () {
+                            subjectdataCubit.updateExamType(examType);
+
+                            subjectdataCubit
+                                .updateClassAverage(classAverage.text);
+                            subjectdataCubit.updateSubject(subject);
+                            subjectdataCubit.updateExpectedGrade(expectedGrade);
+                            print(subjectdataCubit.state);
+                          },
+                          style: TextButton.styleFrom(
+                            foregroundColor: Colors.black,
+                            backgroundColor:
+                                const Color.fromARGB(255, 73, 144, 226),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 10),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          child: const Text("Submit"),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                const SizedBox(height: 10),
-                marksTable(),
-              ],
+                  const SizedBox(height: 20),
+                  const Text(
+                    "List of Expected Marks",
+                    style: TextStyle(
+                      color: fieldbg,
+                      fontSize: 20,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  marksTable(),
+                ],
+              ),
             ),
           ),
         ),

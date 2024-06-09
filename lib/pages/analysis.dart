@@ -14,6 +14,15 @@ const List<String> subjects = [
   'Soft Skills'
 ];
 
+const List data = [
+  [81, 94, 75, 21.54],
+  [75, 85, 65, 15.54],
+  [85, 95, 75, 25.54],
+  [80, 90, 70, 20.54],
+  [70, 80, 60, 10.54],
+  [90, 100, 80, 30.54],
+];
+
 class AnalysisPage extends StatefulWidget {
   const AnalysisPage({super.key});
 
@@ -22,8 +31,8 @@ class AnalysisPage extends StatefulWidget {
 }
 
 class _AnalysisPageState extends State<AnalysisPage> {
-  bool isShowingMainData = false;
-  String dropDownValue = subjects[0];
+  String dropDown1Value = subjects[0];
+  String dropDown2Value = subjects[0];
 
   @override
   Widget build(BuildContext context) {
@@ -105,11 +114,10 @@ class _AnalysisPageState extends State<AnalysisPage> {
                               ),
                               dropdownColor: const Color(0xFF102032),
                               padding: EdgeInsets.all(5),
-                              value: dropDownValue,
+                              value: dropDown1Value,
                               onChanged: (String? newValue) {
                                 setState(() {
-                                  dropDownValue = newValue!;
-                                  isShowingMainData = !isShowingMainData;
+                                  dropDown1Value = newValue!;
                                 });
                               },
                               items: subjects
@@ -166,7 +174,7 @@ class _AnalysisPageState extends State<AnalysisPage> {
                         SizedBox(
                             height: 300,
                             child: GraphView(
-                                isShowingMainData: isShowingMainData)),
+                                isShowingMainData: subjects.indexOf(dropDown1Value) + 1)),
                         const SizedBox(height: 30),
                         const Text(
                           'Performance Overview',
@@ -183,11 +191,10 @@ class _AnalysisPageState extends State<AnalysisPage> {
                           ),
                           dropdownColor: const Color(0xFF102032),
                           padding: EdgeInsets.all(5),
-                          value: dropDownValue,
+                          value: dropDown2Value,
                           onChanged: (String? newValue) {
                             setState(() {
-                              dropDownValue = newValue!;
-                              isShowingMainData = !isShowingMainData;
+                              dropDown2Value = newValue!;
                             });
                           },
                           items: subjects
@@ -197,6 +204,115 @@ class _AnalysisPageState extends State<AnalysisPage> {
                               child: Text(e),
                             );
                           }).toList(),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Row(
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    'Average Mark:',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontStyle: FontStyle.italic,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Text(
+                                    'Highest Mark',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontStyle: FontStyle.italic,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Text(
+                                    'Lowest Mark:',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontStyle: FontStyle.italic,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Text(
+                                    'Number of exams taken:',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontStyle: FontStyle.italic,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Text(
+                                    'Improvement rate:',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontStyle: FontStyle.italic,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(width: 20),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    '${data[subjects.indexOf(dropDown2Value)][0]}',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Text(
+                                    '${data[subjects.indexOf(dropDown2Value)][1]}',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Text(
+                                    '${data[subjects.indexOf(dropDown2Value)][2]}',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Text(
+                                    '3',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Text(
+                                    '${data[subjects.indexOf(dropDown2Value)][3]}%',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ]),
                 )
