@@ -9,7 +9,7 @@ void main() {
   Gemini.init(
     apiKey: GEMINI_API_KEY,
   );
-  runApp(const MyApp());
+  runApp(const MyApp());  
 }
 
 class MyApp extends StatelessWidget {
