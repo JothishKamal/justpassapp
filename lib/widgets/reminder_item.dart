@@ -16,41 +16,41 @@ class ToDoItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-        onTap: () {
-          // print('Clicked on Todo Item.');
-          onToDoChanged(todo);
-        },
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
+      onTap: () {
+        // print('Clicked on Todo Item.');
+        onToDoChanged(todo);
+      },
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      leading: const Icon(
+        Icons.radio_button_unchecked,
+        color: Color(0xff4990E2),
+      ),
+      title: Text(
+        todo.todoText!,
+        style: TextStyle(
+          fontSize: 14,
+          color: Colors.black,
+          decoration: todo.isDone ? TextDecoration.lineThrough : null,
         ),
-        contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-        leading: const Icon(
-          Icons.radio_button_unchecked,
-          color: Color(0xff4990E2),
+      ),
+      trailing: Container(
+        padding: EdgeInsets.all(0),
+        margin: EdgeInsets.symmetric(vertical: 12),
+        height: 35,
+        width: 35,
+        child: IconButton(
+          color: Colors.black,
+          iconSize: 18,
+          icon: Icon(Icons.delete),
+          onPressed: () {
+            // print('Clicked on delete icon');
+            onDeleteItem(todo.id);
+          },
         ),
-        title: Text(
-          todo.todoText!,
-          style: TextStyle(
-            fontSize: 14,
-            color: Colors.black,
-            decoration: todo.isDone ? TextDecoration.lineThrough : null,
-          ),
-        ),
-        trailing: Container(
-          padding: EdgeInsets.all(0),
-          margin: EdgeInsets.symmetric(vertical: 12),
-          height: 35,
-          width: 35,
-          child: IconButton(
-            color: Colors.black,
-            iconSize: 18,
-            icon: Icon(Icons.delete),
-            onPressed: () {
-              // print('Clicked on delete icon');
-              onDeleteItem(todo.id);
-            },
-          ),
-        ),
-      );
+      ),
+    );
   }
 }

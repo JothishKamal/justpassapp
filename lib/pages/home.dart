@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:justpassapp/cubit/date_cubit.dart';
-import 'package:justpassapp/cubit/recent.activity.cubit.dart';
+import 'package:justpassapp/cubit/recent_activity.dart';
 import 'package:justpassapp/model/reminders.dart';
 import 'package:justpassapp/widgets/reminder_item.dart';
 
@@ -215,7 +215,6 @@ class ReminderBox extends StatefulWidget {
 }
 
 class _ReminderBoxState extends State<ReminderBox> {
-
   final todosList = ToDo.todoList();
   List<ToDo> _foundToDo = [];
   final _todoController = TextEditingController();
@@ -237,16 +236,14 @@ class _ReminderBoxState extends State<ReminderBox> {
           color: const Color(0xFFD9D9D9),
           borderRadius: BorderRadius.circular(10),
         ),
-        child: ListView(
-          children: [
-            for (ToDo todoo in todosList)
+        child: ListView(children: [
+          for (ToDo todoo in todosList)
             ToDoItem(
               todo: todoo,
               onToDoChanged: _handleToDoChange,
               onDeleteItem: _deleteToDoItem,
             ),
-          ]
-        ),
+        ]),
       ),
     );
   }
