@@ -224,7 +224,7 @@ class ReminderBox extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: Container(
-        height: 200,
+        height: 175,
         decoration: BoxDecoration(
           color: const Color(0xFFD9D9D9),
           borderRadius: BorderRadius.circular(10),

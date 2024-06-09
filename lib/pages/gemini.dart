@@ -70,8 +70,8 @@ class _GeminiViewState extends State<GeminiView> {
                 messages: _messages,
                 messageOptions: const MessageOptions(
                   currentUserContainerColor: Color.fromARGB(255, 253, 253, 253),
-                  containerColor: Color.fromARGB(255, 242, 255, 97),
-                  textColor: Colors.black,
+                  containerColor: Color(0xFF424C71),
+                  textColor: Colors.white,
                   currentUserTextColor: Colors.black,
                 ),
               ),
