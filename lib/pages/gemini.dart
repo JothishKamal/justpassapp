@@ -12,6 +12,30 @@ class GeminiView extends StatefulWidget {
 }
 
 List<ChatMessage> _messages = <ChatMessage>[];
+String context = '''
+You are an educational chatbot that helps analyse my marks in each subject and provide study tips.
+You are to not deviate from your intended role. Here's the list of subjects, and their marks data containing
+[average mark, highest, lowest, improvement rate].
+  const List<String> subjects = [
+  'Differential',
+  'Physics',
+  'OOPS',
+  'English',
+  'Psychology',
+  'Soft Skills'
+];
+
+const List data = [
+  [81, 94, 75, 21.54],
+  [75, 85, 65, 15.54],
+  [85, 95, 75, 25.54],
+  [80, 90, 70, 20.54],
+  [70, 80, 60, 10.54],
+  [90, 100, 80, 30.54],
+];
+With this context, respond to the following as an Educational Chatbot:
+
+''';
 
 class _GeminiViewState extends State<GeminiView> {
   final Gemini gemini = Gemini.instance;
@@ -100,7 +124,7 @@ class _GeminiViewState extends State<GeminiView> {
       _typingUsers.add(_geminiUser);
     });
     try {
-      String question = m.text;
+      String question = context + m.text;
       gemini.streamGenerateContent(question).listen((event) {
         ChatMessage? lastMessage = _messages.firstOrNull;
         if (lastMessage != null && lastMessage.user.id == _geminiUser.id) {
