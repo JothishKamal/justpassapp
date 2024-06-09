@@ -119,7 +119,19 @@ class _MarksPageState extends State<MarksPage> {
                   ),
                 ),
               ),
-              TextButton(onPressed: () {}, child: Text("data")),
+              TextButton(
+                onPressed: () {},
+                child: Text("Submit"),
+                style: TextButton.styleFrom(
+                  foregroundColor: Colors.black,
+                  backgroundColor: Color.fromARGB(255, 73, 144, 226),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+              ),
               const SizedBox(height: 20),
               const Text(
                 "List of Expected Marks",
@@ -195,7 +207,6 @@ Widget salutation(String name) {
           color: fieldbg,
           fontSize: 30,
           fontWeight: FontWeight.bold,
-          fontFamily: 'Newsreader',
         ),
       ),
       const SizedBox(width: 6),
@@ -204,7 +215,6 @@ Widget salutation(String name) {
         style: const TextStyle(
           color: fieldbg,
           fontSize: 30,
-          fontFamily: 'Newsreader',
         ),
       ),
     ],
