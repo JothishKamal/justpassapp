@@ -70,7 +70,7 @@ class MyApp extends StatelessWidget {
                 '/': (context) => const BottomBar(),
                 '/gemini': (context) => const GeminiView(),
                 '/new_entry': (context) => const NewEntryPage(),
-                '/entry': (context) => const EntryPage(),
+                '/entry': (context) => EntryPage(),
                 '/modify-acadDet': (context) => const ModifyDetailsPage(),
               });
         },

@@ -41,6 +41,11 @@ class JournalCubit extends Cubit<JournalState> {
     journalBox.add(newEntry);
     loadJournalEntries();
   }
+
+  void updateJournalEntry(int key, JournalEntry updatedEntry) {
+    journalBox.put(key, updatedEntry);
+    loadJournalEntries();
+  }
 }
 
 // convert ISO8601 string to DateTime - 6 June 2024

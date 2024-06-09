@@ -26,4 +26,20 @@ class JournalEntry extends HiveObject {
     this.imagePaths = const [],
     this.attachmentPaths = const [],
   });
+
+  JournalEntry copyWith({
+    String? title,
+    String? content,
+    String? date,
+    List<String>? imagePaths,
+    List<String>? attachmentPaths,
+  }) {
+    return JournalEntry(
+      title: title ?? this.title,
+      content: content ?? this.content,
+      date: date ?? this.date,
+      imagePaths: imagePaths ?? this.imagePaths,
+      attachmentPaths: attachmentPaths ?? this.attachmentPaths,
+    );
+  }
 }
