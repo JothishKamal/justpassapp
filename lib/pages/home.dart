@@ -216,8 +216,8 @@ class ReminderBox extends StatefulWidget {
 
 class _ReminderBoxState extends State<ReminderBox> {
   final todosList = ToDo.todoList();
-  List<ToDo> _foundToDo = [];
-  final _todoController = TextEditingController();
+  // List<ToDo> _foundToDo = [];
+  // final _todoController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
