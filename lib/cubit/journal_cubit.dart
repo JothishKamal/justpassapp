@@ -46,5 +46,5 @@ class JournalCubit extends Cubit<JournalState> {
 // convert ISO8601 string to DateTime - 6 June 2024
 String formatDate(String date) {
   final parsedDate = DateTime.parse(date);
-  return DateFormat('d MMMM y').format(parsedDate);
+  return DateFormat('d MMMM y hh:mm:a').format(parsedDate);
 }

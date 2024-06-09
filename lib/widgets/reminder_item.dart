@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:justpassapp/cubit/journal_cubit.dart';
 import 'package:justpassapp/model/reminders.dart';
 
 class ToDoItem extends StatefulWidget {
@@ -28,9 +29,12 @@ class _ToDoItemState extends State<ToDoItem> {
         widget.onToDoChanged(widget.todo);
       },
       leading: Icon(
-        widget.todo.isDone ? Icons.radio_button_checked : Icons.radio_button_unchecked,
+        widget.todo.isDone
+            ? Icons.radio_button_checked
+            : Icons.radio_button_unchecked,
         color: Color(0xff4990E2),
       ),
+      subtitle: Text(formatDate(DateTime.now().toString())),
       title: Text(
         widget.todo.todoText!,
         style: TextStyle(
