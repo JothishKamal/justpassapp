@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:justpassapp/cubit/date_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:justpassapp/cubit/recent.activity.cubit.dart';
 
 class JournalPage extends StatefulWidget {
   const JournalPage({super.key});
@@ -58,7 +59,7 @@ class _JournalPageState extends State<JournalPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            header(),
+            header(context),
             const SizedBox(height: 10),
             salutation("Aakaash"),
             const Divider(
@@ -200,7 +201,8 @@ class _JournalPageState extends State<JournalPage> {
   }
 }
 
-Widget header() {
+Widget header(BuildContext context) {
+  final recentActivityCubit = RecentActivityCubit();
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -212,14 +214,32 @@ Widget header() {
           );
         },
       ),
-      IconButton(
-        onPressed: () {},
-        icon: const Icon(
-          Icons.notifications,
-          size: 28,
-          color: Colors.white,
+      Row(
+          children: [
+            IconButton(
+              onPressed: () {
+                recentActivityCubit.updateRecentActivity(recentActivityCubit
+                    .state['recentActivity']
+                    .sublist(
+                        1, recentActivityCubit.state['recentActivity'].length)
+                    .toList());
+                Navigator.pushNamed(context, '/gemini');
+              },
+              icon: const Icon(
+                Icons.smart_toy,
+                color: Colors.white,
+              ),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.notifications,
+                color: Colors.white,
+                size: 28,
+              ),
+            ),
+          ],
         ),
-      ),
     ],
   );
 }

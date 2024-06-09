@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:justpassapp/cubit/date_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:justpassapp/cubit/recent.activity.cubit.dart';
 import 'package:justpassapp/widgets/graph_view.dart';
 
 const List<String> subjects = [
@@ -34,6 +35,8 @@ class _AnalysisPageState extends State<AnalysisPage> {
   String dropDown1Value = subjects[0];
   String dropDown2Value = subjects[0];
 
+  final recentActivityCubit = RecentActivityCubit();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,13 +60,31 @@ class _AnalysisPageState extends State<AnalysisPage> {
                         );
                       },
                     ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.notifications,
-                        size: 28,
-                        color: Colors.white,
-                      ),
+                    Row(
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            recentActivityCubit.updateRecentActivity(recentActivityCubit
+                                .state['recentActivity']
+                                .sublist(
+                                    1, recentActivityCubit.state['recentActivity'].length)
+                                .toList());
+                            Navigator.pushNamed(context, '/gemini');
+                          },
+                          icon: const Icon(
+                            Icons.smart_toy,
+                            color: Colors.white,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.notifications,
+                            color: Colors.white,
+                            size: 28,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
