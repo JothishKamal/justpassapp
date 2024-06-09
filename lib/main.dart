@@ -4,7 +4,7 @@ import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:justpassapp/consts.dart';
 import 'package:justpassapp/pages/entry_page.dart';
-import 'package:justpassapp/pages/gemini.dart';
+import 'package:justpassapp/pages/chat_bot.dart';
 import 'package:justpassapp/pages/new_entry_page.dart';
 import 'package:justpassapp/widgets/bottom_bar.dart';
 import 'package:justpassapp/cubit/theme_cubit.dart';
