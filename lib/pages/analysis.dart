@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:justpassapp/cubit/date_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:justpassapp/cubit/recent.activity.cubit.dart';
+import 'package:justpassapp/cubit/recent_activity.dart';
 import 'package:justpassapp/widgets/graph_view.dart';
 
 const List<String> subjects = [
