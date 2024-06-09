@@ -9,10 +9,12 @@ Widget marksTable() {
       color: fieldbg,
       borderRadius: BorderRadius.circular(7),
     ),
-    padding: const EdgeInsets.all(10),
     child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: DataTable(
+          horizontalMargin: 18,
+          dataRowHeight: 40,
+          headingRowHeight: 50,
           columns: const <DataColumn>[
             DataColumn(
               label: Text(

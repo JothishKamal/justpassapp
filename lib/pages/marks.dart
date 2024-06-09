@@ -36,7 +36,7 @@ class _MarksPageState extends State<MarksPage> {
       backgroundColor: const Color(0xFF102032),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.only(left: 8, right: 8, top: 8, bottom: 10),
+          padding: EdgeInsets.only(left: 0, right: 0, top: 15, bottom: 10),
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(15),
@@ -75,7 +75,7 @@ class _MarksPageState extends State<MarksPage> {
                               const Icon(Icons.edit, color: fieldbg, size: 20)),
                     ],
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 5),
                   dropDown("Select Subject", subjects, subject,
                       (String? value) {
                     setState(() {
@@ -158,7 +158,7 @@ class _MarksPageState extends State<MarksPage> {
                       fontSize: 20,
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 8),
                   marksTable(),
                 ],
               ),
