@@ -22,8 +22,8 @@ class AnalysisPage extends StatefulWidget {
 }
 
 class _AnalysisPageState extends State<AnalysisPage> {
-  bool isShowingMainData = false;
-  String dropDownValue = subjects[0];
+  String dropDown1Value = subjects[0];
+  String dropDown2Value = subjects[0];
 
   @override
   Widget build(BuildContext context) {
@@ -105,11 +105,10 @@ class _AnalysisPageState extends State<AnalysisPage> {
                               ),
                               dropdownColor: const Color(0xFF102032),
                               padding: EdgeInsets.all(5),
-                              value: dropDownValue,
+                              value: dropDown1Value,
                               onChanged: (String? newValue) {
                                 setState(() {
-                                  dropDownValue = newValue!;
-                                  isShowingMainData = !isShowingMainData;
+                                  dropDown1Value = newValue!;
                                 });
                               },
                               items: subjects
@@ -166,7 +165,7 @@ class _AnalysisPageState extends State<AnalysisPage> {
                         SizedBox(
                             height: 300,
                             child: GraphView(
-                                isShowingMainData: isShowingMainData)),
+                                isShowingMainData: subjects.indexOf(dropDown1Value) + 1)),
                         const SizedBox(height: 30),
                         const Text(
                           'Performance Overview',
@@ -183,11 +182,10 @@ class _AnalysisPageState extends State<AnalysisPage> {
                           ),
                           dropdownColor: const Color(0xFF102032),
                           padding: EdgeInsets.all(5),
-                          value: dropDownValue,
+                          value: dropDown2Value,
                           onChanged: (String? newValue) {
                             setState(() {
-                              dropDownValue = newValue!;
-                              isShowingMainData = !isShowingMainData;
+                              dropDown2Value = newValue!;
                             });
                           },
                           items: subjects

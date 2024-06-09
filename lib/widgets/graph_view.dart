@@ -9,16 +9,36 @@ class GraphView extends StatelessWidget {
     required this.isShowingMainData,
   });
 
-  final bool isShowingMainData;
+  final int isShowingMainData;
 
   @override
   Widget build(BuildContext context) {
     return LineChart(
-      isShowingMainData ? sampleData1 : sampleData2,
+      dataGet(),
       duration: const Duration(milliseconds: 250),
     );
   }
 
+  LineChartData dataGet() {
+    switch (isShowingMainData) {
+      case 1:
+        return sampleData1;
+      case 2:
+        return sampleData2;
+      case 3:
+        return sampleData3;
+      case 4:
+        return sampleData4;
+      case 5:
+        return sampleData5;
+      case 6:
+        return sampleData6;
+      default:
+        return sampleData1;
+    }
+  }
+
+  // DIFFERENTIAL
   LineChartData get sampleData1 => LineChartData(
         lineTouchData: lineTouchData1,
         gridData: gridData,
@@ -31,12 +51,64 @@ class GraphView extends StatelessWidget {
         minY: 0,
       );
 
+  // PHYSICS
   LineChartData get sampleData2 => LineChartData(
         lineTouchData: lineTouchData2,
         gridData: gridData,
         titlesData: titlesData2,
         borderData: borderData,
         lineBarsData: lineBarsData2,
+        minX: 0,
+        maxX: 6,
+        maxY: 100,
+        minY: 0,
+      );
+
+  // OOPS
+  LineChartData get sampleData3 => LineChartData(
+        lineTouchData: lineTouchData1,
+        gridData: gridData,
+        titlesData: titlesData1,
+        borderData: borderData,
+        lineBarsData: lineBarsData3,
+        minX: 0,
+        maxX: 6,
+        maxY: 100,
+        minY: 0,
+      );
+  // English
+  LineChartData get sampleData4 => LineChartData(
+        lineTouchData: lineTouchData1,
+        gridData: gridData,
+        titlesData: titlesData1,
+        borderData: borderData,
+        lineBarsData: lineBarsData4,
+        minX: 0,
+        maxX: 6,
+        maxY: 100,
+        minY: 0,
+      );
+
+  // Psychology
+  LineChartData get sampleData5 => LineChartData(
+        lineTouchData: lineTouchData1,
+        gridData: gridData,
+        titlesData: titlesData1,
+        borderData: borderData,
+        lineBarsData: lineBarsData5,
+        minX: 0,
+        maxX: 6,
+        maxY: 100,
+        minY: 0,
+      );
+
+  // Soft Skills
+  LineChartData get sampleData6 => LineChartData(
+        lineTouchData: lineTouchData1,
+        gridData: gridData,
+        titlesData: titlesData1,
+        borderData: borderData,
+        lineBarsData: lineBarsData6,
         minX: 0,
         maxX: 6,
         maxY: 100,
@@ -71,7 +143,7 @@ class GraphView extends StatelessWidget {
       ];
 
   LineTouchData get lineTouchData2 => const LineTouchData(
-        enabled: false,
+        enabled: true,
       );
 
   FlTitlesData get titlesData2 => FlTitlesData(
@@ -92,6 +164,26 @@ class GraphView extends StatelessWidget {
   List<LineChartBarData> get lineBarsData2 => [
         lineChartBarData2_1,
         lineChartBarData2_2,
+      ];
+
+  List<LineChartBarData> get lineBarsData3 => [
+        lineChartBarData3_1,
+        lineChartBarData3_2,
+      ];
+
+  List<LineChartBarData> get lineBarsData4 => [
+        lineChartBarData4_1,
+        lineChartBarData4_2,
+      ];
+
+  List<LineChartBarData> get lineBarsData5 => [
+        lineChartBarData5_1,
+        lineChartBarData5_2,
+      ];
+
+  List<LineChartBarData> get lineBarsData6 => [
+        lineChartBarData6_1,
+        lineChartBarData6_2,
       ];
 
   Widget leftTitleWidgets(double value, TitleMeta meta) {
@@ -179,6 +271,7 @@ class GraphView extends StatelessWidget {
         ),
       );
 
+  // DIFFERENTIAL
   LineChartBarData get lineChartBarData1_1 => LineChartBarData(
         isCurved: true,
         color: Colors.blue,
@@ -210,6 +303,7 @@ class GraphView extends StatelessWidget {
         ],
       );
 
+  // PHYSICS
   LineChartBarData get lineChartBarData2_1 => LineChartBarData(
         isCurved: true,
         color: Colors.pink,
@@ -238,6 +332,134 @@ class GraphView extends StatelessWidget {
           FlSpot(1, 30),
           FlSpot(3, 50),
           FlSpot(5, 90),
+        ],
+      );
+
+  // OOPS
+  LineChartBarData get lineChartBarData3_1 => LineChartBarData(
+        isCurved: true,
+        color: Colors.pink,
+        barWidth: 4,
+        isStrokeCapRound: true,
+        dotData: const FlDotData(show: false),
+        belowBarData: BarAreaData(show: false),
+        spots: const [
+          FlSpot(1, 60),
+          FlSpot(3, 50),
+          FlSpot(5, 60),
+        ],
+      );
+
+  LineChartBarData get lineChartBarData3_2 => LineChartBarData(
+        isCurved: true,
+        color: Colors.blue,
+        barWidth: 4,
+        isStrokeCapRound: true,
+        dotData: const FlDotData(show: false),
+        belowBarData: BarAreaData(
+          show: false,
+          color: Colors.blue,
+        ),
+        spots: const [
+          FlSpot(1, 70),
+          FlSpot(3, 60),
+          FlSpot(5, 50),
+        ],
+      );
+  
+  // English
+  LineChartBarData get lineChartBarData4_1 => LineChartBarData(
+        isCurved: true,
+        color: Colors.pink,
+        barWidth: 4,
+        isStrokeCapRound: true,
+        dotData: const FlDotData(show: false),
+        belowBarData: BarAreaData(show: false),
+        spots: const [
+          FlSpot(1, 20),
+          FlSpot(3, 60),
+          FlSpot(5, 40),
+        ],
+      );
+
+  LineChartBarData get lineChartBarData4_2 => LineChartBarData(
+        isCurved: true,
+        color: Colors.blue,
+        barWidth: 4,
+        isStrokeCapRound: true,
+        dotData: const FlDotData(show: false),
+        belowBarData: BarAreaData(
+          show: false,
+          color: Colors.blue,
+        ),
+        spots: const [
+          FlSpot(1, 90),
+          FlSpot(3, 50),
+          FlSpot(5, 60),
+        ],
+      );
+
+  // Psychology
+  LineChartBarData get lineChartBarData5_1 => LineChartBarData(
+        isCurved: true,
+        color: Colors.pink,
+        barWidth: 4,
+        isStrokeCapRound: true,
+        dotData: const FlDotData(show: false),
+        belowBarData: BarAreaData(show: false),
+        spots: const [
+          FlSpot(1, 70),
+          FlSpot(3, 87),
+          FlSpot(5, 60),
+        ],
+      );
+
+  LineChartBarData get lineChartBarData5_2 => LineChartBarData(
+        isCurved: true,
+        color: Colors.blue,
+        barWidth: 4,
+        isStrokeCapRound: true,
+        dotData: const FlDotData(show: false),
+        belowBarData: BarAreaData(
+          show: false,
+          color: Colors.blue,
+        ),
+        spots: const [
+          FlSpot(1, 40),
+          FlSpot(3, 34),
+          FlSpot(5, 76),
+        ],
+      );
+
+  // Soft Skills
+  LineChartBarData get lineChartBarData6_1 => LineChartBarData(
+        isCurved: true,
+        color: Colors.pink,
+        barWidth: 4,
+        isStrokeCapRound: true,
+        dotData: const FlDotData(show: false),
+        belowBarData: BarAreaData(show: false),
+        spots: const [
+          FlSpot(1, 40),
+          FlSpot(3, 86),
+          FlSpot(5, 48),
+        ],
+      );
+
+  LineChartBarData get lineChartBarData6_2 => LineChartBarData(
+        isCurved: true,
+        color: Colors.blue,
+        barWidth: 4,
+        isStrokeCapRound: true,
+        dotData: const FlDotData(show: false),
+        belowBarData: BarAreaData(
+          show: false,
+          color: Colors.blue,
+        ),
+        spots: const [
+          FlSpot(1, 38),
+          FlSpot(3, 58),
+          FlSpot(5, 68),
         ],
       );
 }
