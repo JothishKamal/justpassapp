@@ -22,7 +22,8 @@ class JournalCubit extends Cubit<JournalState> {
         .where(
           (entry) =>
               entry.title.toLowerCase().contains(query.toLowerCase()) ||
-              entry.content.toLowerCase().contains(query.toLowerCase()),
+              entry.content.toLowerCase().contains(query.toLowerCase()) ||
+              entry.date.toLowerCase().contains(query.toLowerCase()),
         )
         .toList();
     emit(JournalLoaded(entries));
