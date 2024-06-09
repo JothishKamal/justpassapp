@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:justpassapp/model/reminders.dart';
 
-class ToDoItem extends StatelessWidget {
+class ToDoItem extends StatefulWidget {
   final ToDo todo;
   final onToDoChanged;
   final onDeleteItem;
@@ -14,11 +14,18 @@ class ToDoItem extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<ToDoItem> createState() => _ToDoItemState();
+}
+
+Color binColor = Colors.redAccent;
+
+class _ToDoItemState extends State<ToDoItem> {
+  @override
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
         // print('Clicked on Todo Item.');
-        onToDoChanged(todo);
+        widget.onToDoChanged(widget.todo);
       },
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
@@ -29,11 +36,11 @@ class ToDoItem extends StatelessWidget {
         color: Color(0xff4990E2),
       ),
       title: Text(
-        todo.todoText!,
+        widget.todo.todoText!,
         style: TextStyle(
           fontSize: 14,
           color: Colors.black,
-          decoration: todo.isDone ? TextDecoration.lineThrough : null,
+          decoration: widget.todo.isDone ? TextDecoration.lineThrough : null,
         ),
       ),
       trailing: Container(
@@ -42,12 +49,13 @@ class ToDoItem extends StatelessWidget {
         height: 35,
         width: 35,
         child: IconButton(
-          color: Colors.black,
           iconSize: 18,
-          icon: Icon(Icons.delete),
+          icon: Icon(
+            Icons.delete,
+            color: binColor,
+          ),
           onPressed: () {
-            // print('Clicked on delete icon');
-            onDeleteItem(todo.id);
+            widget.onDeleteItem(widget.todo.id);
           },
         ),
       ),
