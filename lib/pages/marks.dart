@@ -4,7 +4,6 @@ import 'package:justpassapp/cubit/date_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:justpassapp/cubit/recent.activity.cubit.dart';
 import 'package:justpassapp/cubit/subject_data.cubit.dart';
-import 'package:justpassapp/pages/home.dart';
 import 'package:justpassapp/widgets/marks.table.dart';
 
 class MarksPage extends StatefulWidget {
