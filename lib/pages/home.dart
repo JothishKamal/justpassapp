@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:justpassapp/cubit/date_cubit.dart';
 import 'package:justpassapp/cubit/recent.activity.cubit.dart';
-import 'package:justpassapp/pages/gemini.dart';
 
 Map<int, String> _quotesMap = {
   1: "Live as if you were to die tomorrow.",
@@ -78,10 +77,7 @@ class HeaderRow extends StatelessWidget {
                     .sublist(
                         1, recentActivityCubit.state['recentActivity'].length)
                     .toList());
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const GeminiView()),
-                );
+                Navigator.pushNamed(context, '/gemini');
               },
               icon: const Icon(
                 Icons.smart_toy,

@@ -3,6 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:justpassapp/consts.dart';
+import 'package:justpassapp/pages/entry_page.dart';
+import 'package:justpassapp/pages/gemini.dart';
+import 'package:justpassapp/pages/new_entry_page.dart';
 import 'package:justpassapp/widgets/bottom_bar.dart';
 import 'package:justpassapp/cubit/theme_cubit.dart';
 
@@ -23,31 +26,36 @@ class MyApp extends StatelessWidget {
       child: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (context, themeState) {
           return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'JustPassApp',
-            theme: ThemeData(
-              fontFamily: GoogleFonts.poppins().fontFamily,
-              colorScheme: ColorScheme.fromSeed(
-                seedColor: const Color(0xFF102033),
+              debugShowCheckedModeBanner: false,
+              title: 'JustPassApp',
+              theme: ThemeData(
+                fontFamily: GoogleFonts.poppins().fontFamily,
+                colorScheme: ColorScheme.fromSeed(
+                  seedColor: const Color(0xFF102033),
+                  brightness: Brightness.light,
+                ),
+                useMaterial3: true,
                 brightness: Brightness.light,
               ),
-              useMaterial3: true,
-              brightness: Brightness.light,
-            ),
-            darkTheme: ThemeData(
-              fontFamily: GoogleFonts.poppins().fontFamily,
-              colorScheme: ColorScheme.fromSeed(
-                seedColor: const Color(0xFF4A90E2),
+              darkTheme: ThemeData(
+                fontFamily: GoogleFonts.poppins().fontFamily,
+                colorScheme: ColorScheme.fromSeed(
+                  seedColor: const Color(0xFF4A90E2),
+                  brightness: Brightness.dark,
+                ),
+                useMaterial3: true,
                 brightness: Brightness.dark,
               ),
-              useMaterial3: true,
-              brightness: Brightness.dark,
-            ),
-            themeMode: themeState == ThemeState.light
-                ? ThemeMode.light
-                : ThemeMode.dark,
-            home: const BottomBar(),
-          );
+              themeMode: themeState == ThemeState.light
+                  ? ThemeMode.light
+                  : ThemeMode.dark,
+              initialRoute: '/',
+              routes: {
+                '/': (context) => const BottomBar(),
+                '/gemini': (context) => const GeminiView(),
+                '/new_entry': (context) => const NewEntryPage(),
+                '/entry': (context) => const EntryPage(),
+              });
         },
       ),
     );

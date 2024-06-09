@@ -81,7 +81,6 @@ class _GeminiViewState extends State<GeminiView> {
                   },
                 ),
                 messageOptions: const MessageOptions(
-                  
                   currentUserContainerColor: Color.fromARGB(255, 253, 253, 253),
                   containerColor: Color(0xFF424C71),
                   textColor: Colors.white,

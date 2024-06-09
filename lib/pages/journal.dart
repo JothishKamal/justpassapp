@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:justpassapp/cubit/date_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:justpassapp/pages/entry_page.dart';
-import 'package:justpassapp/pages/new_entry_page.dart';
 
 class JournalPage extends StatefulWidget {
   const JournalPage({super.key});
@@ -80,12 +78,7 @@ class _JournalPageState extends State<JournalPage> {
                 ),
                 IconButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => NewEntryPage(),
-                      ),
-                    );
+                    Navigator.pushNamed(context, '/new_entry');
                   },
                   icon: const Icon(
                     Icons.add,
@@ -156,12 +149,8 @@ class _JournalPageState extends State<JournalPage> {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => EntryPage(),
-                        ),
-                      );
+                      Navigator.pushNamed(context, '/entry',
+                          arguments: activeEntries[index]);
                     },
                     child: Container(
                       padding: const EdgeInsets.symmetric(
