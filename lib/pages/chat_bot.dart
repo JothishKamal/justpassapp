@@ -45,7 +45,7 @@ class _GeminiViewState extends State<GeminiView> {
     firstName: 'Aakash',
   );
 
-  final ChatUser _geminiUser = ChatUser(id: '2', firstName: 'Examiner');
+  final ChatUser _geminiUser = ChatUser(id: '2', firstName: '');
 
   final List<ChatUser> _typingUsers = <ChatUser>[];
 

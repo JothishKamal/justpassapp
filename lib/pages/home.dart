@@ -70,7 +70,6 @@ class HeaderRow extends StatelessWidget {
         Row(
           children: [
             IconButton(
-              
               onPressed: () {
                 recentActivityCubit.updateRecentActivity(recentActivityCubit
                     .state['recentActivity']
@@ -82,7 +81,6 @@ class HeaderRow extends StatelessWidget {
               icon: const Icon(
                 Icons.smart_toy,
                 color: Colors.white,
-                
               ),
             ),
             IconButton(
