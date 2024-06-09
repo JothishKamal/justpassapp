@@ -61,7 +61,7 @@ class _JournalPageState extends State<JournalPage> {
           children: [
             header(context),
             const SizedBox(height: 10),
-            salutation("Aakaash"),
+            salutation("KimmyBae"),
             const Divider(
               color: Color(0xFF315F95),
               thickness: 2,
@@ -215,31 +215,31 @@ Widget header(BuildContext context) {
         },
       ),
       Row(
-          children: [
-            IconButton(
-              onPressed: () {
-                recentActivityCubit.updateRecentActivity(recentActivityCubit
-                    .state['recentActivity']
-                    .sublist(
-                        1, recentActivityCubit.state['recentActivity'].length)
-                    .toList());
-                Navigator.pushNamed(context, '/gemini');
-              },
-              icon: const Icon(
-                Icons.smart_toy,
-                color: Colors.white,
-              ),
+        children: [
+          IconButton(
+            onPressed: () {
+              recentActivityCubit.updateRecentActivity(recentActivityCubit
+                  .state['recentActivity']
+                  .sublist(
+                      1, recentActivityCubit.state['recentActivity'].length)
+                  .toList());
+              Navigator.pushNamed(context, '/gemini');
+            },
+            icon: const Icon(
+              Icons.smart_toy,
+              color: Colors.white,
             ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.notifications,
-                color: Colors.white,
-                size: 28,
-              ),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.notifications,
+              color: Colors.white,
+              size: 28,
             ),
-          ],
-        ),
+          ),
+        ],
+      ),
     ],
   );
 }

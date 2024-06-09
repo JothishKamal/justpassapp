@@ -51,8 +51,8 @@ class ProfilePage extends StatelessWidget {
                       ),
                       ClipRRect(
                         borderRadius: BorderRadius.circular(20),
-                        child: Image.asset(
-                          'assets/images/ass.jpg',
+                        child: Image.network(
+                          'https://media.newyorker.com/photos/5aeb586479f6430aaa0f9d19/16:9/w_1280,c_limit/Wright-Kim-Jong-Un-Profile.jpg',
                           height: 100,
                           width: 100,
                           fit: BoxFit.cover,
@@ -62,14 +62,14 @@ class ProfilePage extends StatelessWidget {
                         height: 30,
                       ),
                       const Text(
-                        'Aakaash Saathya',
+                        'KimmyBae Saathya',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 25,
                         ),
                       ),
                       const Text(
-                        '@aakaashsaathya',
+                        '@KimmyBaesaathya',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -100,7 +100,7 @@ class ProfilePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 _buildPersonalInfo(
-                    Icons.email_outlined, 'aakaashsaathya@gmail.com'),
+                    Icons.email_outlined, 'KimmyBaesaathya@gmail.com'),
                 const SizedBox(height: 10),
                 _buildPersonalInfo(Icons.phone_outlined, '+91 6969696969'),
                 const SizedBox(height: 10),
@@ -116,15 +116,15 @@ class ProfilePage extends StatelessWidget {
   List<Widget> _buildPersonalGoals() {
     List<Map<String, dynamic>> goals = [
       {
-        "text": "Get higher than 35 in CAT 2 Differential Eq.",
+        "text": "Make sure new haircut is perfectly symm",
         "isCompleted": true,
       },
       {
-        "text": "Complete tutorial sheet in 1 hour",
+        "text": "Kimflix & chill with the squad",
         "isCompleted": false,
       },
       {
-        "text": "Work on my time management",
+        "text": "Launch rocket: fireworks with neighbors",
         "isCompleted": false,
       },
       {
@@ -146,14 +146,16 @@ class ProfilePage extends StatelessWidget {
                       color: Color.fromRGBO(217, 217, 217, 0.46),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Row(
+                    child: Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
                         Icon(
                           goal['isCompleted']
                               ? Icons.check_box
                               : Icons.check_box_outline_blank,
-                          color:
-                              goal['isCompleted'] ? Color(0xFF04DF00) : Colors.white,
+                          color: goal['isCompleted']
+                              ? Color(0xFF04DF00)
+                              : Colors.white,
                         ),
                         const SizedBox(width: 10),
                         Text(
@@ -162,6 +164,7 @@ class ProfilePage extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             color: Color(0xFFCECFD1),
                           ),
+                          maxLines: 1,
                         ),
                       ],
                     ),
@@ -190,7 +193,7 @@ class ProfilePage extends StatelessWidget {
           const SizedBox(width: 10),
           Text(
             info,
-            style: const TextStyle( fontSize: 14, color: Colors.black),
+            style: const TextStyle(fontSize: 14, color: Colors.black),
           ),
         ],
       ),

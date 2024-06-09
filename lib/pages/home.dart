@@ -117,7 +117,7 @@ class WelcomeText extends StatelessWidget {
           ),
         ),
         Text(
-          "Aakaash!",
+          "KimmyBae!",
           style: TextStyle(
             color: Colors.white,
             fontSize: 32,

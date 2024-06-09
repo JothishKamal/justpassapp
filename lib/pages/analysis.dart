@@ -64,11 +64,13 @@ class _AnalysisPageState extends State<AnalysisPage> {
                       children: [
                         IconButton(
                           onPressed: () {
-                            recentActivityCubit.updateRecentActivity(recentActivityCubit
-                                .state['recentActivity']
-                                .sublist(
-                                    1, recentActivityCubit.state['recentActivity'].length)
-                                .toList());
+                            recentActivityCubit.updateRecentActivity(
+                                recentActivityCubit.state['recentActivity']
+                                    .sublist(
+                                        1,
+                                        recentActivityCubit
+                                            .state['recentActivity'].length)
+                                    .toList());
                             Navigator.pushNamed(context, '/gemini');
                           },
                           icon: const Icon(
@@ -99,7 +101,7 @@ class _AnalysisPageState extends State<AnalysisPage> {
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      'Aakaash!',
+                      'KimmyBae!',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 30,
@@ -195,7 +197,8 @@ class _AnalysisPageState extends State<AnalysisPage> {
                         SizedBox(
                             height: 300,
                             child: GraphView(
-                                isShowingMainData: subjects.indexOf(dropDown1Value) + 1)),
+                                isShowingMainData:
+                                    subjects.indexOf(dropDown1Value) + 1)),
                         const SizedBox(height: 30),
                         const Text(
                           'Performance Overview',
