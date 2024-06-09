@@ -45,7 +45,7 @@ class _GeminiViewState extends State<GeminiView> {
     firstName: 'Aakash',
   );
 
-  final ChatUser _geminiUser = ChatUser(id: '2', firstName: '');
+  final ChatUser _geminiUser = ChatUser(id: '2', firstName: 'Wicki');
 
   final List<ChatUser> _typingUsers = <ChatUser>[];
 
@@ -57,7 +57,7 @@ class _GeminiViewState extends State<GeminiView> {
           ChatMessage(
               user: _geminiUser,
               createdAt: DateTime.now(),
-              text: 'Hello, I am Examiner. How can I help you?'));
+              text: 'Hello, I am Wicki. How can I help you?'));
     }
     return Scaffold(
       appBar: AppBar(
@@ -72,7 +72,7 @@ class _GeminiViewState extends State<GeminiView> {
         ),
         backgroundColor: primary,
         title: const Text(
-          'Examiner Chat',
+          'Wicki Chat',
           style: TextStyle(
             color: Colors.white,
           ),
