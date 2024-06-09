@@ -13,7 +13,7 @@ class _NewEntryPageState extends State<NewEntryPage> {
 
   @override
   void initState() {
-    super.initState(); // Initial text
+    super.initState();
   }
 
   @override
@@ -93,30 +93,10 @@ class _NewEntryPageState extends State<NewEntryPage> {
                   onPressed: () {},
                 ),
                 const Spacer(),
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.add, color: Colors.white),
-                      onPressed: () {},
-                      color: Colors.black,
-                    ),
-                    Positioned(
-                      right: 0,
-                      bottom: 0,
-                      child: CircleAvatar(
-                        radius: 10,
-                        backgroundColor: Colors.yellow,
-                        child: const Text(
-                          'S',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                IconButton(
+                  icon: const Icon(Icons.add, color: Colors.white),
+                  onPressed: () {},
+                  color: Colors.black,
                 ),
               ],
             ),
