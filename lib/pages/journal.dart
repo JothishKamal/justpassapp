@@ -229,7 +229,6 @@ Widget salutation(String name) {
           color: Colors.white,
           fontSize: 30,
           fontWeight: FontWeight.bold,
-          fontFamily: 'Newsreader',
         ),
       ),
       const SizedBox(width: 6),
@@ -238,7 +237,6 @@ Widget salutation(String name) {
         style: const TextStyle(
           color: Colors.white,
           fontSize: 30,
-          fontFamily: 'Newsreader',
         ),
       ),
     ],
