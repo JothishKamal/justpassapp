@@ -59,6 +59,16 @@ Add your own exams, subjects, grades, and marks for a personalized experience.
 ### Example Response:
 "Based on the provided data, your overall performance is quite good. You have consistently scored above average in all subjects. In Differential, you have shown a remarkable improvement of 21.54%, indicating your dedication and hard work. You have also performed exceptionally well in Soft Skills, with an average score of 90 and a highest score of 100. Keep up the good work, and try to maintain this level of performance in the future."
 
+## The Product Presentation:
+![1](https://github.com/JothishKamal/justpassapp/assets/134390548/35c8323d-82e5-4ce2-98d4-d00dd443505d)
+![2](https://github.com/JothishKamal/justpassapp/assets/134390548/578e84bb-3bae-40e5-b936-81b2c2688bc8)
+![3](https://github.com/JothishKamal/justpassapp/assets/134390548/e2a4a816-2f90-4639-b0f2-5171aa2c26fe)
+![4](https://github.com/JothishKamal/justpassapp/assets/134390548/b4c84dfa-25b9-4837-b52e-1acfba3af423)
+![5](https://github.com/JothishKamal/justpassapp/assets/134390548/c56f588f-c81c-47ca-a91b-34fde4497895)
+![6](https://github.com/JothishKamal/justpassapp/assets/134390548/d4c35a3e-f786-4503-9648-3fdce285f9ce)
+![7](https://github.com/JothishKamal/justpassapp/assets/134390548/afbdbc8a-cdf3-440e-8406-a1c153cf12f4)
+![8](https://github.com/JothishKamal/justpassapp/assets/134390548/f6c438fa-fc84-459e-b50c-7899a60d2b5c)
+
 ## Meet The Team:
 - Pravenraam Shankar, Manager
 - Laksh Bharani, Tech
